@@ -6,14 +6,11 @@
 \usepackage{amsmath,amssymb}
 \usepackage{fontspec}
 \usepackage[mathbf=sym]{unicode-math}
-% Fonts. TeX Gyre Pagella (a Palatino design) with its matching math font: open, readable over long pages,
-% and part of every TeX Live installation. To try another pairing, swap the two blocks below for one of:
-%   \setmainfont{STIX Two Text}       \setmathfont{STIX Two Math}
-%   \setmainfont{Libertinus Serif}    \setmathfont{Libertinus Math}
-%   \setmainfont{New Computer Modern} \setmathfont{New Computer Modern Math}
-%   (Latin Modern, the LaTeX default: delete both lines)
-\setmainfont{texgyrepagella}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
-\setmathfont{texgyrepagella-math.otf}
+% Fonts. New Computer Modern in its Book weight, a heavier cut of Computer Modern that holds up at 11 pt on
+% screen and in print, with the matching Book-weight math font. The files ship in fonts/ (GUST Font License),
+% so the build does not depend on the TeX Live version. Other pairings are compared in notes/font-demo/.
+\setmainfont{NewCM10}[Path=fonts/,Extension=.otf,UprightFont=*-Book,ItalicFont=*-BookItalic,BoldFont=*-Bold,BoldItalicFont=*-BoldItalic]
+\setmathfont{NewCMMath-Book.otf}[Path=fonts/]
 % Code: FiraCode Nerd Font Mono, shipped in ../fonts (SIL Open Font License) so Overleaf has it too.
 \setmonofont{FiraCodeNerdFontMono}[Path=fonts/,Extension=.ttf,UprightFont=*-Regular,BoldFont=*-Bold,Scale=MatchLowercase]
 \usepackage{microtype}
