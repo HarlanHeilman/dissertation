@@ -24,7 +24,7 @@ Within this dissertation the database answers a need that the preceding chapters
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig6-1}
+  \includegraphics[width=\linewidth]{fig6-01_data-model}
   \caption[Simplified entity relationship diagram of the X-ray Atlas data model.]{Simplified entity relationship diagram of the X-ray Atlas data model. Boxes correspond to the record types a user queries; the production schema normalizes several of these into additional tables for workflow and provenance tracking.}
   \label{fig:6.1}
 \end{figure}
@@ -138,7 +138,7 @@ Linked publication DOI & Source or citing publication associated with the datase
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig6-5}
+  \includegraphics[width=\linewidth]{fig6-05_molecule-record}
   \caption[X-ray Atlas molecule record UI.]{X-ray Atlas molecule record UI. Molecules are linked to external CAS and PubChem registries, and taxonomical information is stored. Molecule synonyms provide a searchable many to one representation to serve the wide community with multiple names of the same molecule. Tags provide hierarchical groupings of common or similar molecules. Users can contribute edit or modify records, as well as favorite records to make them easier to return to.}
   \label{fig:6.5}
 \end{figure}
@@ -154,7 +154,7 @@ Three independent checks apply to a contributed dataset, operating at different 
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig6-6}
+  \includegraphics[width=\linewidth]{fig6-06_dataset-record}
   \caption[X-ray Atlas NEXAFS Dataset UI.]{X-ray Atlas NEXAFS Dataset UI. Datasets store the full processing specifications to convert the raw measured signals into optical constants.}
   \label{fig:6.6}
 \end{figure}
@@ -168,7 +168,7 @@ The web interface at xrayatlas.wsu.edu supports browsing and searching by molecu
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig6-7}
+  \includegraphics[width=\linewidth]{fig6-07_user-profile}
   \caption[X-ray Atlas User profile.]{X-ray Atlas User profile. Minimal user information is stored only enough to ensure connection and authentication though ORCID. Users can choose to create research groups and link other socials if they wish to. Contribution metrics are stored with similar calculation as though Google Scholar and similar sites. Users have full autonomy to edit how or if they appear to the rest of the community as well as maintain edit and remove data they contribute.}
   \label{fig:6.7}
 \end{figure}
@@ -180,7 +180,7 @@ Citation follows two conventions depending on scope. An individual dataset is ci
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig6-8}
+  \includegraphics[width=\linewidth]{fig6-08_architecture}
   \caption[Architecture of X-ray Atlas and the lineage of optical models.]{Architecture of X-ray Atlas and the lineage of optical models. a) X-ray Atlas holds the database and files behind the web application and the REST interface /api/v1, with ORCID handling sign-in and Zenodo issuing DOIs. The browser reaches the web application, while the xrayatlas Python package and the xatlas command-line client (red) share the REST interface. b) An optical model pins a dataset revision, the default model can be forked into independently versioned models (red), and a citation lists the model, its dataset revisions, and every ancestor in the chain.}
   \label{fig:6.8}
 \end{figure}
