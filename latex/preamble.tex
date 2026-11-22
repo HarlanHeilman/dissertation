@@ -1,4 +1,5 @@
-% Preamble. Compile with LuaLaTeX and biber (latexmk does both, see .latexmkrc).
+% Preamble, loaded by ../main.tex. Compile with LuaLaTeX and biber (latexmk does both, see ../latexmkrc).
+% All paths are relative to the repository root.
 % WSU: 1 in margins, page numbers centered 0.5 in from the bottom edge.
 \usepackage[letterpaper,margin=1in,footskip=0.5in]{geometry}
 \usepackage{amsmath,amssymb}
@@ -6,11 +7,11 @@
 \usepackage[mathbf=sym]{unicode-math}
 \setmathfont{Latin Modern Math}
 \usepackage{newunicodechar}
-\input{unicode-greek}
+\input{latex/unicode-greek}
 \usepackage{setspace}
 \onehalfspacing  % WSU minimum is 1.5 spacing for the body; double spacing is recommended
 \usepackage{graphicx}
-\graphicspath{{../figures/dissertation/word-export/}{../figures/dissertation/}}
+\graphicspath{{figures/dissertation/word-export/}{figures/dissertation/}}
 \usepackage{array,calc,booktabs,longtable,multirow}
 \usepackage[font={small,stretch=1},labelfont=bf]{caption}  % captions single-spaced throughout
 \usepackage{xcolor}
@@ -28,7 +29,7 @@
   isbn=false,
   eprint=false
 ]{biblatex}
-\addbibresource{references.bib}
+\addbibresource{latex/references.bib}
 \usepackage[hidelinks]{hyperref}
 \usepackage{bookmark}
 \renewcommand{\contentsname}{Table of Contents}

@@ -2,6 +2,8 @@
 # Word drafts, defense decks, animations, data, and notes stay out of git.
 /*
 !/.gitignore
+!/main.tex
+!/latexmkrc
 !/latex/
 !/src/
 !/figures/
@@ -9,7 +11,7 @@
 !/figures/dissertation/
 
 # LaTeX build output
-/latex/build/
+/build/
 *.aux
 *.bbl
 *.bcf

@@ -1,14 +1,14 @@
 # Dissertation, LaTeX version
 
-Build with `latexmk` from this folder (LuaLaTeX and biber, set in `.latexmkrc`). Output goes to `build/main.pdf`.
+The root file is `../main.tex`, at the top of the repository, because Overleaf compiles from the project root. Build with `latexmk main.tex` from the repository root (LuaLaTeX and biber, set in `../latexmkrc`). On Overleaf, set the main document to `main.tex` and the compiler to LuaLaTeX.
 
 ## Layout
 
-- `main.tex` sets the page order. `preamble.tex` holds packages, WSU page setup, and the title, author, and date macros.
+- `../main.tex` sets the page order. `preamble.tex` holds packages, WSU page setup, and the title, author, and date macros.
 - `frontmatter/` has the title, committee, abstract, acknowledgments, and dedication pages, in the order set by the WSU Thesis and Dissertation Formatting Guidelines v1.3 (January 2026).
 - `chapters/` has one file per chapter. `appendices/` holds the supporting information, now Appendix A.
 - `references.bib` was exported from the Zotero citations in the Word draft. Keys follow the pattern `authorYEARword`.
-- Figures are read from `../figures/dissertation/word-export/` (images taken from the Word draft, named by figure number) and then `../figures/dissertation/`.
+- All paths are written from the repository root. Figures are read from `figures/dissertation/word-export/` (images taken from the Word draft, named by figure number) and then `figures/dissertation/`.
 
 ## Origin
 

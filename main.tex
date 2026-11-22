@@ -1,0 +1,35 @@
+% Root file. Overleaf compiles from the project root, so every path below is written from here.
+\documentclass[11pt,letterpaper,oneside]{report}
+\input{latex/preamble}
+
+\begin{document}
+
+% ---------------- prefatory pages (lowercase roman) ----------------
+% WSU order: title, committee, abstract, acknowledgments, table of contents and lists, dedication.
+\pagenumbering{roman}
+\input{latex/frontmatter/titlepage}
+\input{latex/frontmatter/committee}
+\input{latex/frontmatter/abstract}
+\input{latex/frontmatter/acknowledgments}
+\tableofcontents
+\listoffigures
+\listoftables
+\input{latex/frontmatter/dedication}
+
+% ---------------- main text ----------------
+\clearpage
+\pagenumbering{arabic}
+\include{latex/chapters/ch1-introduction}
+\include{latex/chapters/ch2-molecular-films}
+\include{latex/chapters/ch3-reflectivity-methods}
+\include{latex/chapters/ch4-buried-interfaces}
+\include{latex/chapters/ch5-individual-resonances}
+\include{latex/chapters/ch6-xray-atlas}
+\include{latex/chapters/ch7-conclusion}
+
+% ---------------- back matter ----------------
+\printbibliography[heading=bibintoc,title={References}]
+\appendix
+\include{latex/appendices/appA-supporting-information}
+
+\end{document}
