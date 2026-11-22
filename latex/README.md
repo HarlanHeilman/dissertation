@@ -8,7 +8,7 @@ The root file is `../main.tex`, at the top of the repository, because Overleaf c
 - `frontmatter/` has the title, committee, abstract, acknowledgments, and dedication pages, in the order set by the WSU Thesis and Dissertation Formatting Guidelines v1.3 (January 2026).
 - `chapters/` has one file per chapter. `appendices/` holds the supporting information, now Appendix A.
 - `references.bib` was exported from the Zotero citations in the Word draft. Keys follow the pattern `authorYEARword`.
-- All paths are written from the repository root. Figures are read from `figures/dissertation/word-export/` (images taken from the Word draft, named by figure number) and then `figures/dissertation/`.
+- All paths are written from the repository root. Figures are read from `figures/dissertation/`, with `.pdf` taken before `.png`. 34 of the 51 figures are vector PDFs. The 17 raster figures are the originals at their full saved resolution, because no vector version exists. Figures 4.1, 4.2 and 4.4 and Figures A.1, A.3 to A.5, A.7, A.9, A.10 and A.13 come from PNGs saved by the notebooks in `refl-analysis/notebooks/`, and Figure 5.1 is `fig4.1_ML-DFT.png`. Figures 3.3, 3.11, 6.1 and 6.7 are a photograph or screenshots. Figures A.6 and A.11 are still the Word copies in `word-export/`, because the notebook versions differ from what the Word draft shows.
 
 ## Origin
 

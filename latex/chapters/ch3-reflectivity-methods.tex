@@ -6,7 +6,7 @@ This chapter develops the physical and practical framework used in every later c
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig3-1}
+  \includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{fig2-01_scattering-geometry}
   \caption[Scattering geometries and the momentum transfer.]{Scattering geometries and the momentum transfer. a) A plane wave with wavevector k scatters from a finite object, and the curved near-field wavefronts flatten into the far-field pattern recorded along k\ensuremath{'} at scattering angle 2θ. The momentum transfer is q = k\ensuremath{'} − k, with |q| = (4π/λ) sin θ. b) Specular reflection from a film on a substrate at grazing angle θ, for which qz = (4π/λ) sin θ lies along the film normal. s polarization places E normal to the plane of incidence and p polarization places E in it.}
   \label{fig:3.1}
 \end{figure}
@@ -18,7 +18,7 @@ The far-field condition is stated through the Fresnel number \(F = a^{2}/(L\lamb
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig3-2}
+  \includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{fig2-02_near-far-field}
   \caption[The far-field pattern emerges from local interactions between scatterers.]{The far-field pattern emerges from local interactions between scatterers. A plane wave with wavevector k and intensity I0 illuminates five scatterers of size a separated by distances of order d. The front scatterer scatters forward along ks, so a deeper scatterer is driven by both I0 and this secondary field before it radiates along k\ensuremath{'}. Black lines are crests of the total scattered field from a two-dimensional multiple-scattering (Foldy-Lax) calculation, distorted near the cluster and flattening into outgoing wavefronts with distance. A detector at L ≫ d, a records only the far-field intensity I(2θ) (red), and the L axis is broken.}
   \label{fig:3.2}
 \end{figure}
@@ -89,7 +89,7 @@ Real interfaces are rough or graded, which damps the specular reflectivity at ea
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig3-3}
+  \includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{beamline-schematic}
   \caption[Beamline schematic of ALS Beamline 11.0.1.2.]{Beamline schematic of ALS Beamline 11.0.1.2. a) Optical path of X-rays: (1) UPS undulator injection source producing polarized photons, (2) toroidal focusing mirror, (3) beam shaping slits, (4) vertical deflection steering and focusing mirrors, (5) grating monochromator for energy selection, (6) higher order suppression optics to remove higher harmonics and linearly attenuate the beam, (7) gold mesh intensity monitor, (8) reflectometer chamber. b) Interior of the 11.0.1.2 chamber: (1) beam entrance path after leaving the beam shaping slits, (2) sample stage with four rotation axes, (3) area detector with three degrees of freedom mounted on a goniometer rotation arm with near coaxial rotation with the sample stage.}
   \label{fig:3.3}
 \end{figure}
@@ -121,7 +121,7 @@ sample \(z\) alignment routine. As the alignment improves these distributions ch
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig3-4}
+  \includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{fig2-07_alignment}
   \caption[Sample alignment with a finite beam and a finite photodiode, simulated by ray Monte Carlo.]{Sample alignment with a finite beam and a finite photodiode, simulated by ray Monte Carlo. a, b) Knife-edge geometry, in which the sample is raised through the beam at θ = 0, and the photodiode signal in 25 µm steps with an error-function fit, which places the surface at z0 = −0.7 ± 0.5 µm for a beam of σ ≈ 41 µm. c, d) Rocking geometry at fixed z0 with the detector at 0°, where light reflected from the surface (dark red) adds to the unblocked beam until a larger tilt sends it over the diode (gray, dashed), and the scan in 0.05° steps with a forward-model fit (red). The resulting cliff near θs = 0.29° shifts the half-maximum midpoint (gray, dashed) to 0.06° for a true offset of zero, while the fit (red, dashed) recovers an offset of 0.001 ± 0.003°. e, f) θ-2θ geometry with the detector at θd = 2°, where the whole beam reflects onto the diode near θs = 1°, and the scan in 0.04° steps with a soft-edged top-hat fit centered at θ0 = 1.003 ± 0.001°. Angles in the schematics are exaggerated.}
   \label{fig:3.4}
 \end{figure}
@@ -159,7 +159,7 @@ This routine produces a single intensity value for each incident angle, but the 
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig3-5}
+  \includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{fig2-09_reduction}
   \caption[Reduction of measured CCD frames into a stitched reflectivity curve, ZnPc at 285.0 eV in s polarization (Scan 85302).]{Reduction of measured CCD frames into a stitched reflectivity curve, ZnPc at 285.0 eV in s polarization (Scan 85302). a) A 2 × 2 binned frame at θ = 13.56° and 0.1 s on a logarithmic scale, with the specular region enlarged. Specular counts are summed in a 13 × 13 pixel box (solid), and the background is the mean of two equal boxes 28 pixels to either side (dashed). b) Background-subtracted count rate, counts divided by the exposure t plus the shutter offset t0 = 3.9 ms, for the four series and the direct beam I0 (star). Each series has its own exposure and higher-order suppressor position and repeats the last angles of the previous series. c) Stitched reflectivity with propagated uncertainties, mostly smaller than the markers, each series divided by I0 and by the running product of stitch factors Sn,n−1. Inset, R2/R1 at the overlap angles and S2,1 = 48.7 ± 2.0 with its uncertainty (red band).}
   \label{fig:3.5}
 \end{figure}
@@ -195,7 +195,7 @@ Near the critical angle the reflected amplitude is not small, and at every burie
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig3-6}
+  \includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{fig2-11_transfer-matrix}
   \caption[Multiple reflections make the exact solution of the layer stack necessary.]{Multiple reflections make the exact solution of the layer stack necessary. a) Every interface of a stack with edge-on (layer 1) and face-on (layer 2) molecules reflects and transmits, and all reflected orders interfere at the detector. The field vector Ψ obeys ∂zΨ = i(ω/c)ΔΨ in each uniaxial layer, and interface matrices Li and propagation matrices Pi compose to the stack matrix ΓN that gives the reflection coefficients. b to d) s-polarized reflectivity at 285.1 eV from the transfer matrix (red) and the kinematic approximation (black, dashed) for the Chapter 4 single film (b), a 100 Å edge-on layer over a 90 Å face-on layer (c), and six periods of 40 Å edge-on and 40 Å face-on layers (d). The median deviation between the two is 0.23, 0.13, and 0.31 decades for b, c, and d.}
   \label{fig:3.6}
 \end{figure}
@@ -203,7 +203,7 @@ Near the critical angle the reflected amplitude is not small, and at every burie
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig3-7}
+  \includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{fig2-12_interfaces}
   \caption[Three interface models at the same roughness σ = 20 Å for a 192.7 Å ZnPc film on Si at 283.7 eV.]{Three interface models at the same roughness σ = 20 Å for a 192.7 Å ZnPc film on Si at 283.7 eV. a) Real-space interfaces drawn at equal lateral and vertical scale, with the wavelength λ = 43.7 Å and 2σ (red) marked. Névot-Croce describes fine roughness with a short in-plane correlation length ξ, Debye-Waller describes broad facets with a long ξ, and the graded interface describes interdiffusion without in-plane structure. b) Depth profiles of δxx as each model computes them. Névot-Croce and Debye-Waller compute the sharp profile (red), shown with the error-function profile usually drawn for them (black, dashed), while the graded interface slices the error-function profile into 1 Å layers and computes it directly (red), with the sharp profile for reference (gray, dashed).}
   \label{fig:3.7}
 \end{figure}
@@ -221,7 +221,7 @@ Because of this, it is the job of the researcher to identify the most likely mod
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig3-8}
+  \includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{fig2-13_objective-transforms}
   % TODO caption contains equations that were flattened to plain text in the Word export; retypeset them.
   \caption[Objective transforms change which points control a reflectivity fit.]{Objective transforms change which points control a reflectivity fit. A simulated s-polarized dataset for the Chapter 4 ZnPc film at 285.1 eV, with noise σ=aR+bq (points) and the model (red), shown as a) R, b) log10R, and c) Rq4. Below each panel is the statistical leverage of every point in an unweighted least-squares fit of film thickness, roughness, tilt, and density, relative to a uniform share (dashed line). Neff/N is the participation ratio, the fraction of points that effectively carry the fit.}
   \label{fig:3.8}
@@ -238,7 +238,7 @@ Reflectivity objectives combine three difficulties, isolate in Fig.~\ref{fig:3.9
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig3-10}
+  \includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{fig2-15_uncertainty}
   \caption[From the global optimum to parameter uncertainty on the Fig.]{From the global optimum to parameter uncertainty on the Fig.~\ref{fig:3.9} objective. a) Differential evolution with the population at generations 0 (gray), 4 (light red), and 8 (red), reaching (178.2 Å, 14.9 Å) after 270 evaluations. The red box marks the basin enlarged in b and c. b) The log10χ2ν surface over that basin (0.83 Å by 0.46 Å) with the differential-evolution best point (star) and the local polish by L-BFGS-B (red, 27 evaluations) and Nelder-Mead (black, 58 evaluations), both converging to (178.00 Å, 14.99 Å). c) Affine-invariant ensemble MCMC in the same window, 32 walkers for 3000 steps after 1000 steps of burn-in, with an acceptance fraction of 0.72. d) Posterior samples with marginal distributions and 1σ and 2σ contours from the MCMC covariance (black, dashed), the finite-difference Hessian at the minimum (red), and the L-BFGS-B inverse Hessian (red, dotted).}
   \label{fig:3.10}
 \end{figure}
@@ -246,7 +246,7 @@ Reflectivity objectives combine three difficulties, isolate in Fig.~\ref{fig:3.9
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig3-9}
+  \includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{fig2-14_optimizers}
   \caption[Four optimizers on the same sharp, correlated, and nonlinear reflectivity objective.]{Four optimizers on the same sharp, correlated, and nonlinear reflectivity objective. The surface is log10χ2ν of simulated s- and p-polarized reflectivity at 283.7 eV for the Chapter 4 film divided into a bulk layer of thickness tbulk and a buried interfacial layer of thickness tint, fit on log R, with a single deep minimum (star) at tbulk = 178 Å and tint = 15 Å. Every run starts from the same point (black circle, 195 Å, 30 Å). a, b) Levenberg-Marquardt (69 evaluations) and L-BFGS-B (48 evaluations) descend into the nearest valley and stop at the same local minimum, (210.4 Å, 14.1 Å) with log10χ2ν = 1.52. c) Differential evolution population at generations 0 (gray), 4 (light red), and 39 (red), which converges to the global minimum (178.0 Å, 15.0 Å) with log10χ2ν = −0.58 after 984 evaluations. d) Random-walk Metropolis chain of 4000 steps at the true likelihood, which reaches the minimum from this start but accepts 1 percent of its proposals in the sharp valley.}
   \label{fig:3.9}
 \end{figure}
@@ -270,7 +270,7 @@ Bayesian optimization and amortized inference reduce the number of forward evalu
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig3-11_beamline-ui}
+  \includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{fig3-11_beamline-ui}
   \caption[Future Beamline 11.0.1.2 beamline user interface (left, light mode, right dark mode).]{Future Beamline 11.0.1.2 beamline user interface (left, light mode, right dark mode). Integrates pan automation, data access and analysis, and a standard control integration to directly drive the beamline.}
   \label{fig:3.11}
 \end{figure}
@@ -284,7 +284,7 @@ Figure~\ref{fig:3.12} assembles the procedures of this chapter into the decision
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig3-12}
+  \includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{fig2-16_automation}
   \caption[Decision loop for autonomous reflectivity measurement.]{Decision loop for autonomous reflectivity measurement. A Gaussian process chooses the next condition (polarization, photon energy, and angle range) or the next sample, and a new sample is located before both branches pass to the alignment checker. After a polarization change the loop waits 15 min, and the sample is realigned whenever it fails the check at 1° and 2°. Each condition is measured one series at a time, with the incident intensity optimized for each series and data collected until the beam is lost, and a completed condition (red) returns control to the Gaussian process.}
   \label{fig:3.12}
 \end{figure}

@@ -24,7 +24,7 @@ Within this dissertation the database answers a need that the preceding chapters
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig6-01_data-model}
+  \includegraphics[width=0.95\linewidth,height=0.75\textheight,keepaspectratio]{fig6-01_data-model}
   \caption[Simplified entity relationship diagram of the X-ray Atlas data model.]{Simplified entity relationship diagram of the X-ray Atlas data model. Boxes correspond to the record types a user queries; the production schema normalizes several of these into additional tables for workflow and provenance tracking.}
   \label{fig:6.1}
 \end{figure}
@@ -34,7 +34,7 @@ Within this dissertation the database answers a need that the preceding chapters
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig6-2}
+  \includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{fig5-02_normalization}
   \caption[From raw signal to optical constants for the ZnPc dataset used in Chapter 4.]{From raw signal to optical constants for the ZnPc dataset used in Chapter 4. a) Raw total electron yield at θ = 54.7° with the pre-edge (270 to 282 eV) and post-edge (320 to 330 eV) windows shaded. b) Zero-one normalization of every polarization geometry, from θ = 20° (red) to 90° (black), with each pre-edge mean set to 0 and one scale, the inverse median edge jump, shared by all geometries. c) Mass absorption of the θ = 54.7° spectrum after bare-atom normalization (black) against the bare-atom absorption of ZnPc (red, dashed). d) Isotropic β from the mass absorption in c (black) and its Kramers-Kronig partner δ (red) at ρ = 1.64 g cm−3.}
   \label{fig:6.2}
 \end{figure}
@@ -50,7 +50,7 @@ In equation form, for the raw trace \(I_{g}(E)\) of geometry \(g\) with pre-edge
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig6-3}
+  \includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{fig5-03_angle-convention}
   \caption[Polarization geometry stored with every trace.]{Polarization geometry stored with every trace. The incident wave (red) carries the electric field E, with θ the polar angle of E from the sample normal n̂ and φ its azimuth in the sample plane measured from x̂. Each trace keeps its ordered (θ, φ) pair, so geometries such as (90°, 45°) and (45°, 90°) remain distinct records.}
   \label{fig:6.3}
 \end{figure}
@@ -58,7 +58,7 @@ In equation form, for the raw trace \(I_{g}(E)\) of geometry \(g\) with pre-edge
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig6-4}
+  \includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{fig5-04_contribution-workflow}
   \caption[Contribution workflow for a new dataset.]{Contribution workflow for a new dataset. A contributor signs in with ORCID, resolves the molecule by InChI, SMILES, CAS number, or PubChem CID, describes the sample processing route and the experiment, and maps the columns of each uploaded CSV trace. Structural validation (red) returns errors and stores nothing for a malformed upload. Accepted uploads are converted to optical density, mass absorption, β, and δ, scored by the quality metrics, recorded as revision 1.0.0 with a checksum of the derived columns, deposited to Zenodo under a versioned DOI, and published. A later renormalization creates a new revision and a new Zenodo version (gray, dashed).}
   \label{fig:6.4}
 \end{figure}
@@ -138,7 +138,7 @@ Linked publication DOI & Source or citing publication associated with the datase
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig6-05_molecule-record}
+  \includegraphics[width=0.85\linewidth,height=0.75\textheight,keepaspectratio]{fig6-05_molecule-record}
   \caption[X-ray Atlas molecule record UI.]{X-ray Atlas molecule record UI. Molecules are linked to external CAS and PubChem registries, and taxonomical information is stored. Molecule synonyms provide a searchable many to one representation to serve the wide community with multiple names of the same molecule. Tags provide hierarchical groupings of common or similar molecules. Users can contribute edit or modify records, as well as favorite records to make them easier to return to.}
   \label{fig:6.5}
 \end{figure}
@@ -154,7 +154,7 @@ Three independent checks apply to a contributed dataset, operating at different 
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig6-06_dataset-record}
+  \includegraphics[width=0.85\linewidth,height=0.75\textheight,keepaspectratio]{fig6-06_dataset-record}
   \caption[X-ray Atlas NEXAFS Dataset UI.]{X-ray Atlas NEXAFS Dataset UI. Datasets store the full processing specifications to convert the raw measured signals into optical constants.}
   \label{fig:6.6}
 \end{figure}
@@ -168,7 +168,7 @@ The web interface at xrayatlas.wsu.edu supports browsing and searching by molecu
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig6-07_user-profile}
+  \includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{fig6-07_user-profile}
   \caption[X-ray Atlas User profile.]{X-ray Atlas User profile. Minimal user information is stored only enough to ensure connection and authentication though ORCID. Users can choose to create research groups and link other socials if they wish to. Contribution metrics are stored with similar calculation as though Google Scholar and similar sites. Users have full autonomy to edit how or if they appear to the rest of the community as well as maintain edit and remove data they contribute.}
   \label{fig:6.7}
 \end{figure}
@@ -180,7 +180,7 @@ Citation follows two conventions depending on scope. An individual dataset is ci
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=\linewidth]{fig6-08_architecture}
+  \includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{fig6-08_architecture}
   \caption[Architecture of X-ray Atlas and the lineage of optical models.]{Architecture of X-ray Atlas and the lineage of optical models. a) X-ray Atlas holds the database and files behind the web application and the REST interface /api/v1, with ORCID handling sign-in and Zenodo issuing DOIs. The browser reaches the web application, while the xrayatlas Python package and the xatlas command-line client (red) share the REST interface. b) An optical model pins a dataset revision, the default model can be forked into independently versioned models (red), and a citation lists the model, its dataset revisions, and every ancestor in the chain.}
   \label{fig:6.8}
 \end{figure}
