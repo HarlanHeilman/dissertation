@@ -1,14 +1,14 @@
-\chapter{X-ray Atlas -- an open science project for optical constants}\label{chap:xray-atlas}
+\chapter[X-RAY ATLAS -- AN OPEN SCIENCE PROJECT FOR OPTICAL CONSTANTS]{X-ray Atlas -- an open science project for optical constants}\label{chap:xray-atlas}
 
-In preparation for submission to an academic journal
+Prepared for submission to an academic journal.
 
 Harlan Heilman, Obaid Alqahtani, Awwad Alotaibi, Victor Murcia, Zhong Xiaowei, Jeromy James Rech, Guillaume Freychet, Priyanka Ketkar, Thomas Ferron, Eliot Gann, Matt Gerbert, Lars Thomsen, Christopher R. McNeill, Alexander Hexemer, Dean M. DeLongchamp, Wei You, Cheng Wang, and Brian A. Collins, In Prep. (2026)
 
-\section{Attributions}\label{attributions-2}
+\section{Attributions}\label{sec:attributions-2}
 
 B.C. and O.A. conceived the study. O.A., A.A., V.M., E.G., L.T., and T.F. collected, analyzed, and processed the initial data upload. J.J.R. and Z.X. synthesized polymer materials and aided H.H. in designing the molecule registry schema. T.F., E.G., M.G., C.R.M., A.H., D.M.D., W.Y., and C.W. worked with H.H. to design the NEXAFS schema, interaction, and analysis integration systems. H.H. wrote all code associated with the backend and front-end design and implementation of the database and wrote the manuscript with input from all authors.
 
-\section{Background and Summary}\label{background-and-summary}
+\section{Background and Summary}\label{sec:background-and-summary}
 
 Resonant elastic and inelastic X-ray scattering techniques depend on optical constants that are derived from a material\textquotesingle s near edge X-ray absorption fine structure (NEXAFS), typically measured independently of the scattering experiment itself.\autocite{yan2013accurate,watts2014calculation} The index of refraction entering a diffraction, reflectivity or scattering calculation carries whatever noise, miscalibration, or normalization artifact is present in the spectrum it was derived from, so a model built on a poorly measured NEXAFS spectrum inherits those defects. Remeasuring NEXAFS on every sample ahead of a scattering measurement is time consuming and not always feasible, particularly for multicomponent blends and layered films, so researchers need a way to judge an existing measurement before deciding whether to reuse it, rederive it, or collect a new one. This requires seeing the raw measurement alongside quality information sufficient to make that judgment, not only the optical constants calculated from it.
 
@@ -20,7 +20,7 @@ X-ray Atlas is built around these requirements. It stores raw NEXAFS measurement
 
 Within this dissertation the database answers a need that the preceding chapters expose. The optical model of Chapter 4 starts from an angle-resolved NEXAFS dataset of ZnPc deposited in X-ray Atlas (accession 193bc0c5), and Chapter 5 shows that NEXAFS of Alq3 films prepared under nearly identical conditions differs in relative peak intensities and in a transition near 284 eV. A spectrum taken from elsewhere must therefore be judged before it is reused, with any analysis built on it traceable to the exact revision it used.
 
-\section{\texorpdfstring{Methods}{Methods}}\label{figmarker31x-figmarker32x-methods}
+\section{\texorpdfstring{Methods}{Methods}}\label{sec:atlas-methods}
 
 \begin{figure}[tbp]
   \centering
@@ -74,7 +74,7 @@ Figure~\ref{fig:6.4} follows a dataset from sign-in to publication, with each st
 
 \textbf{Authentication.} Reading public data requires no account. Contributors sign in through ORCID, so every record they create is tied to a persistent researcher identity. Passkeys provide passwordless sign-in. Actions that cannot be undone or that change ownership, such as merging or deleting datasets and issuing a command-line credential, additionally require a passkey confirmation within the preceding two hours. Administrator actions require a higher assurance level still. Command-line credentials carry read or write scope, are attached only to the host that issued them, and can be revoked by their owner.
 
-\section{Data Records}\label{data-records}
+\section{Data Records}\label{sec:data-records}
 
 Table~\ref{tab:6.1} lists the fields of the two record types most users of the database will query directly, the experiment (dataset) record and its spectrum points, alongside their units and source. X-ray Atlas currently hosts 13 molecules, 47 experiments, and 132,419 spectrum points, contributed by 12 registered users across 3 facilities. Data are stored and served from a hosted relational database (PostgreSQL) and are additionally deposited to Zenodo on every version increment, so a dataset remains citable and retrievable independent of the X-ray Atlas application\textquotesingle s own uptime. Contributed datasets are licensed under CC BY 4.0; the application code that serves them is licensed separately under the MIT license.
 
@@ -144,7 +144,7 @@ Linked publication DOI & Source or citing publication associated with the datase
 \end{figure}
 
 
-\section{Technical Validation}\label{technical-validation}
+\section{Technical Validation}\label{sec:technical-validation}
 
 Three independent checks apply to a contributed dataset, operating at different points in its life to capture different errors.
 
@@ -162,7 +162,7 @@ Three independent checks apply to a contributed dataset, operating at different 
 
 \textbf{Peer review and publication cross reference.} Cross referencing data stored in the database against either an original publication or a new publication featuring it provides additional confidence that the data quality meets the standards of peer review. This added confidence implies that sample preparation follows a usual approach, and data collection and analysis follows from the standards for a given facility and instrumentation, while providing a direct reference back to the original manuscript bearing more detailed methods and conclusions regarding the data.
 
-\section{Usage Notes}\label{usage-notes}
+\section{Usage Notes}\label{sec:usage-notes}
 
 The web interface at xrayatlas.wsu.edu supports browsing and searching by molecule, facility, edge, or tag and shows each dataset's quality metrics alongside its trace. Beyond the browser, X-ray Atlas data is built to be addressed programmatically. A python package, distributed as xrayatlas on the Python Package Index, exposes the same molecule, datasets and optical model records available through the website to scripted analysis, letting a researcher pull a dataset directly into a notebook or an analysis pipeline rather than downloading files by hand. A companion command line interface (CLI), shipped as a single compiled binary in the manner of tools such as the Hugging Face CLI, gives the same access from the terminal for scripting and automation. This programmatic layer is deliberate, framing the registry alongside platforms such as Hugging Face and Weights and Biases rather than as a bespoke scientific database, so that an analysis agent or training pipeline can discover and pull a relevant NEXAFS dataset the same way it would pull a pretrained model, with provenance and attribution carried along automatically rather than left for the user to reconstruct.
 
@@ -176,7 +176,7 @@ The web interface at xrayatlas.wsu.edu supports browsing and searching by molecu
 
 Citation follows two conventions depending on scope. An individual dataset is cited by its own versioned DOI, in the form of the dataset name and DOI, adapted from the original publication, hosted by X-ray Atlas; the entire collection is cited by a collection level DOI together with the date accessed.
 
-\section{\texorpdfstring{Programmatic Access}{Programmatic Access}}\label{figmarker40x-programmatic-access}
+\section{\texorpdfstring{Programmatic Access}{Programmatic Access}}\label{sec:programmatic-access}
 
 \begin{figure}[tbp]
   \centering
@@ -410,6 +410,6 @@ xa.lock("analysis.lock")
 
 xa.restore("analysis.lock")
 
-\section{Code Availability}\label{code-availability}
+\section{Code Availability}\label{sec:code-availability}
 
 The X-ray Atlas web application, database schema, Python package, and command line client are developed in the open at github.com/WSU-Carbon-Lab/xray-atlas. Application code is licensed under the MIT license; contributed datasets are licensed separately under CC BY 4.0.

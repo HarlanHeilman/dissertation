@@ -1,0 +1,28 @@
+% Supplemental file, uploaded to ProQuest separately from the dissertation.
+% Compile on its own: latexmk supplement.tex (on Overleaf, set supplement.tex as the main document).
+\documentclass[11pt,letterpaper,oneside]{report}
+\input{latex/preamble}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\theequation}{S\arabic{equation}}
+\renewcommand{\cftfigpresnum}{FIGURE\ }
+
+\begin{document}
+\pagenumbering{arabic}
+\begin{center}
+  SUPPLEMENTAL MATERIAL\par
+  \vspace{\baselineskip}
+  {\doublespacing\MakeUppercase{\thesistitle}\par}
+  \vspace{\baselineskip}
+  \thesisauthor\par
+  Washington State University\par
+  \thesisdate\par
+\end{center}
+\vspace{\baselineskip}
+\noindent This file accompanies the dissertation and holds the supporting information for the manuscript reproduced in Chapter~4. Figures, tables, sections and equations are numbered S1, S2, and so on.
+
+\input{latex/supplement/supporting-information}
+
+\printbibliography[heading=bibliography,title={REFERENCES}]
+\end{document}

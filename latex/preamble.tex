@@ -1,21 +1,34 @@
 % Preamble, loaded by ../main.tex. Compile with LuaLaTeX and biber (latexmk does both, see ../latexmkrc).
 % All paths are relative to the repository root.
-% WSU: 1 in margins, page numbers centered 0.5 in from the bottom edge.
-\usepackage[letterpaper,margin=1in,footskip=0.5in]{geometry}
+% WSU: at least 1 in margins, page numbers centered 0.5 in from the bottom edge.
+% Side margins of 1.25 in give a 6 in measure, about 85 characters per line (WSU suggests 45 to 90).
+\usepackage[letterpaper,vmargin=1in,hmargin=1.25in,footskip=0.5in]{geometry}
 \usepackage{amsmath,amssymb}
 \usepackage{fontspec}
 \usepackage[mathbf=sym]{unicode-math}
-\setmathfont{Latin Modern Math}
+% Fonts. TeX Gyre Pagella (a Palatino design) with its matching math font: open, readable over long pages,
+% and part of every TeX Live installation. To try another pairing, swap the two blocks below for one of:
+%   \setmainfont{STIX Two Text}       \setmathfont{STIX Two Math}
+%   \setmainfont{Libertinus Serif}    \setmathfont{Libertinus Math}
+%   \setmainfont{New Computer Modern} \setmathfont{New Computer Modern Math}
+%   (Latin Modern, the LaTeX default: delete both lines)
+\setmainfont{texgyrepagella}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setmathfont{texgyrepagella-math.otf}
+% Code: FiraCode Nerd Font Mono, shipped in ../fonts (SIL Open Font License) so Overleaf has it too.
+\setmonofont{FiraCodeNerdFontMono}[Path=fonts/,Extension=.ttf,UprightFont=*-Regular,BoldFont=*-Bold,Scale=MatchLowercase]
+\usepackage{microtype}
 \usepackage{newunicodechar}
 \input{latex/unicode-greek}
 \usepackage{setspace}
-\onehalfspacing  % WSU minimum is 1.5 spacing for the body; double spacing is recommended
+% WSU guidelines for LaTeX: line spacing 120 to 145% of the point size. 1.15 x 13.6 pt = 15.6 pt for 11 pt text (142%).
+\setstretch{1.15}
 \usepackage{graphicx}
 % Figure paths are relative to figures/dissertation/. Vector PDFs are used wherever they exist.
 \graphicspath{{figures/dissertation/}}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 \usepackage{array,calc,booktabs,longtable,multirow}
-\usepackage[font={small,stretch=1},labelfont=bf]{caption}  % captions single-spaced throughout
+% Captions single-spaced throughout, bold label, justified text.
+\usepackage[font={small,stretch=1},labelfont=bf,labelsep=period,justification=justified,singlelinecheck=true,skip=6pt]{caption}
 \usepackage{xcolor}
 \usepackage{enumitem}
 \usepackage{url}
@@ -29,10 +42,69 @@
   minbibnames=1,
   url=false,
   isbn=false,
-  eprint=false
+  eprint=false,
+  backref=true,
+  backrefstyle=three
 ]{biblatex}
 \addbibresource{latex/references.bib}
-\usepackage[hidelinks]{hyperref}
+% Back-links: each reference lists the pages that cite it, as links back into the text.
+\DefineBibliographyStrings{english}{backrefpage={cited on p\adddot},backrefpages={cited on pp\adddot}}
+
+% ---------------- headings and lists, following the WSU ETD example (2024) ----------------
+\usepackage{titlesec}
+% Numbered chapters: centered "CHAPTER n" over the title; appendices read "APPENDIX A".
+\titleformat{\chapter}[display]{\normalfont\large\bfseries\centering}{\MakeUppercase{\chaptertitlename}\ \thechapter}{6pt}{\large}
+\titlespacing*{\chapter}{0pt}{0pt}{18pt}
+% Unnumbered chapter-level headings (Acknowledgments, Dedication, References, lists): centered capitals at body size.
+\titleformat{name=\chapter,numberless}[block]{\normalfont\normalsize\centering}{}{0pt}{\MakeUppercase}
+\titlespacing*{name=\chapter,numberless}{0pt}{0pt}{12pt}
+% Section levels: numbered bold, then bold, then italic run-in for the fourth level.
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.8em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\itshape}{\thesubsubsection}{0.8em}{}
+\titlespacing*{\section}{0pt}{2.0ex plus .5ex minus .2ex}{1.0ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{1.6ex plus .4ex minus .2ex}{0.6ex plus .2ex}
+\titlespacing*{\subsubsection}{0pt}{1.4ex plus .4ex minus .2ex}{0.4ex}
+
+\usepackage{tocloft}
+\renewcommand{\contentsname}{TABLE OF CONTENTS}
+\renewcommand{\listfigurename}{LIST OF FIGURES}
+\renewcommand{\listtablename}{LIST OF TABLES}
+\renewcommand{\cfttoctitlefont}{\hfill\normalfont\normalsize}
+\renewcommand{\cftlottitlefont}{\hfill\normalfont\normalsize}
+\renewcommand{\cftloftitlefont}{\hfill\normalfont\normalsize}
+\newcommand{\pagecolumnhead}{\hfill\null\par\nobreak\vspace{6pt}\hfill\normalfont Page\par}
+\renewcommand{\cftaftertoctitle}{\pagecolumnhead}
+\renewcommand{\cftafterloftitle}{\pagecolumnhead}
+\renewcommand{\cftafterlottitle}{\pagecolumnhead}
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftbeforeloftitleskip}{0pt}
+\setlength{\cftbeforelottitleskip}{0pt}
+% Chapter entries: "CHAPTER n: TITLE" with dot leaders, not bold.
+\renewcommand{\cftchapfont}{\normalfont}
+\renewcommand{\cftchappagefont}{\normalfont}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftchappresnum}{CHAPTER\ }
+\renewcommand{\cftchapaftersnum}{:}
+\newlength{\chapnumbox}\settowidth{\chapnumbox}{CHAPTER 7:\ \ }
+\setlength{\cftchapnumwidth}{\chapnumbox}
+% Figure and table entries: "FIGURE 1.1: short title".
+\renewcommand{\cftfigpresnum}{FIGURE\ }
+\renewcommand{\cftfigaftersnum}{:}
+\renewcommand{\cfttabpresnum}{TABLE\ }
+\renewcommand{\cfttabaftersnum}{:}
+\newlength{\fignumbox}\settowidth{\fignumbox}{FIGURE A.13:\ \ }
+\setlength{\cftfignumwidth}{\fignumbox}
+\setlength{\cfttabnumwidth}{\fignumbox}
+\setlength{\cftfigindent}{0pt}
+\setlength{\cfttabindent}{0pt}
+% Group labels inside the table of contents, written at once so they land before the \include'd chapters.
+\makeatletter
+\newcommand{\tocgroup}[1]{\immediate\write\@auxout{\string\@writefile{toc}{\unexpanded{\vspace{10pt}\noindent #1\par}}}}
+\makeatother
+
+% Internal links stay black (WSU). Bookmarks carry section numbers for the PDF sidebar.
+\usepackage[hidelinks,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=0,pdfdisplaydoctitle=true]{hyperref}
 \usepackage{bookmark}
 \renewcommand{\contentsname}{Table of Contents}
 
@@ -44,3 +116,4 @@
 \newcommand{\thesisauthor}{Harlan D. Heilman}
 \newcommand{\thesisdate}{December 2026}
 \newcommand{\thesisyear}{2026}
+\hypersetup{pdftitle={\thesistitle},pdfauthor={\thesisauthor},pdfsubject={Doctoral dissertation, Washington State University}}

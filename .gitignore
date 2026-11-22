@@ -4,6 +4,8 @@
 !/.gitignore
 !/main.tex
 !/latexmkrc
+!/supplement.tex
+!/fonts/
 !/latex/
 !/src/
 !/figures/

@@ -12,13 +12,18 @@
 \input{latex/frontmatter/abstract}
 \input{latex/frontmatter/acknowledgments}
 \tableofcontents
+\clearpage
+\addcontentsline{toc}{chapter}{LIST OF FIGURES}
 \listoffigures
+\clearpage
+\addcontentsline{toc}{chapter}{LIST OF TABLES}
 \listoftables
 \input{latex/frontmatter/dedication}
 
 % ---------------- main text ----------------
 \clearpage
 \pagenumbering{arabic}
+\tocgroup{CHAPTERS}
 \include{latex/chapters/ch1-introduction}
 \include{latex/chapters/ch2-molecular-films}
 \include{latex/chapters/ch3-reflectivity-methods}
@@ -28,8 +33,7 @@
 \include{latex/chapters/ch7-conclusion}
 
 % ---------------- back matter ----------------
-\printbibliography[heading=bibintoc,title={References}]
-\appendix
-\include{latex/appendices/appA-supporting-information}
+\printbibliography[heading=bibintoc,title={REFERENCES}]
+% The supporting information is a separate supplemental file: supplement.tex.
 
 \end{document}

@@ -1,24 +1,39 @@
 # Dissertation, LaTeX version
 
-The root file is `../main.tex`, at the top of the repository, because Overleaf compiles from the project root. Build with `latexmk main.tex` from the repository root (LuaLaTeX and biber, set in `../latexmkrc`). On Overleaf, set the main document to `main.tex` and the compiler to LuaLaTeX.
+Two documents are built from the repository root, each with LuaLaTeX and biber (`latexmkrc` sets both):
+
+- `main.tex`, the dissertation.
+- `supplement.tex`, the supporting information for Chapter 4, uploaded to ProQuest as a separate supplemental file. Figures, tables, sections and equations there are numbered S1, S2, and so on.
+
+`latexmk` with no argument builds both. On Overleaf, set the compiler to LuaLaTeX and the main document to `main.tex`, and switch the main document to `supplement.tex` to build the supplement.
 
 ## Layout
 
-- `../main.tex` sets the page order. `preamble.tex` holds packages, WSU page setup, and the title, author, and date macros.
-- `frontmatter/` has the title, committee, abstract, acknowledgments, and dedication pages, in the order set by the WSU Thesis and Dissertation Formatting Guidelines v1.3 (January 2026).
-- `chapters/` has one file per chapter. `appendices/` holds the supporting information, now Appendix A.
-- `references.bib` was exported from the Zotero citations in the Word draft. Keys follow the pattern `authorYEARword`.
-- All paths are written from the repository root. Figures are read from `figures/dissertation/`, with `.pdf` taken before `.png`. 34 of the 51 figures are vector PDFs. The 17 raster figures are the originals at their full saved resolution, because no vector version exists. Figures 4.1, 4.2 and 4.4 and Figures A.1, A.3 to A.5, A.7, A.9, A.10 and A.13 come from PNGs saved by the notebooks in `refl-analysis/notebooks/`, and Figure 5.1 is `fig4.1_ML-DFT.png`. Figures 3.3, 3.11, 6.1 and 6.7 are a photograph or screenshots. Figures A.6 and A.11 are still the Word copies in `word-export/`, because the notebook versions differ from what the Word draft shows.
+- `latex/preamble.tex` holds packages, page setup, fonts, heading and list styles, and the title, author and date macros. All paths are written from the repository root.
+- `latex/frontmatter/` has the title, committee, abstract, acknowledgments and dedication pages, in the order and form of the WSU Thesis and Dissertation Formatting Guidelines and the WSU ETD example (2024).
+- `latex/chapters/` has one file per chapter. `latex/supplement/` has the supporting information.
+- `latex/references.bib` was exported from the Zotero citations in the Word draft. Keys follow `authorYEARword`.
+- Figures are read from `figures/dissertation/`, with `.pdf` taken before `.png`.
+- `fonts/` holds FiraCode Nerd Font Mono (SIL Open Font License), used for code.
+
+## Formatting choices
+
+- Margins 1 in top and bottom and 1.25 in at the sides (a 6 in measure), 11 pt type, line stretch 1.15 (142 % of the point size; WSU asks 120 to 145 % for LaTeX), page numbers centered 0.5 in from the bottom edge, roman numerals through the dedication.
+- Text in TeX Gyre Pagella with Pagella Math. `notes/font-demo/font-demo.pdf` compares 15 alternatives; the swap is two lines in `preamble.tex`.
+- Links are black, as WSU requires. Every figure, table, section and citation reference is a link, the PDF has numbered bookmarks, and each reference in the bibliography lists the pages that cite it as links back into the text.
+
+## Figures
+
+34 of the 51 figures in the dissertation and supplement are vector PDFs. The rest are the originals at their full saved resolution, because no vector version exists. Figures 4.1, 4.2 and 4.4 and S1, S3 to S5, S7, S9, S10 and S13 come from PNGs saved by the notebooks in `refl-analysis/notebooks/`, and Figure 5.1 is `fig4.1_ML-DFT.png`. Rerunning the current `v2/SI9` and `v2/SI11` notebooks with PDF output gives figures that differ from the ones in the dissertation, so those were not swapped in. Figures 3.3, 3.11, 6.1 and 6.7 are a photograph or screenshots. S6 and S11 are still the Word copies in `word-export/`, because the notebook versions differ from what the Word draft shows.
 
 ## Origin
 
-Converted on 2026-11-22 from `word/heilman-dissertation-final.docx` using pandoc 3.9 and the scripts in `../src/latex-conversion/`. Those scripts were run once. Rerunning them overwrites any edits made here.
+Converted on 2026-11-22 from `word/heilman-dissertation-final.docx` using pandoc 3.9 and the scripts in `../src/latex-conversion/`. Those scripts were run once; rerunning them overwrites any edits made here.
 
 ## Known cleanup
 
-- 19 captions, in Chapters 3, 4, and 5 and in Appendix A, contained equations that the Word text boxes stored as plain text. Each one is marked `% TODO caption contains equations`.
+- 19 captions (Chapters 3, 4 and 5 and the supplement) contained equations that Word stored as plain text. Each is marked `% TODO caption contains equations`.
 - The 65 display equations are unnumbered `\[ \]` blocks. Equation numbers from Word were not carried over.
-- Figure and table references are now `\ref`. Chapter references ("Chapter 4", 70 of them) are still plain text.
-- "Fig. 4" in Appendix A refers to the numbering of the published manuscript and was left as written.
+- Chapter references ("Chapter 4") are plain text. Section numbers cited from Chapter 4 into the supplement ("Supplemental Material, Sec. 3.1") follow the published SI and do not match the supplement's S1 to S5 sections.
 - Table headers that used Word equations came through as display math inside minipages and should be simplified.
-- WSU asks that the first page of each manuscript chapter carry the full citation or the statement "Prepared for submission to an academic journal."
+- WSU asks for the full citation (published) or the statement "Prepared for submission to an academic journal." on the first page of each manuscript chapter. Chapters 5 and 6 carry the statement. Chapter 4 still reads "In review at an academic journal" and needs its citation.
