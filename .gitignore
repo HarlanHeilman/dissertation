@@ -1,0 +1,30 @@
+# Track the LaTeX source, the code that produces figures, and the dissertation figures.
+# Word drafts, defense decks, animations, data, and notes stay out of git.
+/*
+!/.gitignore
+!/latex/
+!/src/
+!/figures/
+/figures/*
+!/figures/dissertation/
+
+# LaTeX build output
+/latex/build/
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+
+# System and Office clutter
+.DS_Store
+~$*
+__pycache__/

@@ -1,0 +1,415 @@
+\chapter{X-ray Atlas -- an open science project for optical constants}\label{chap:xray-atlas}
+
+In preparation for submission to an academic journal
+
+Harlan Heilman, Obaid Alqahtani, Awwad Alotaibi, Victor Murcia, Zhong Xiaowei, Jeromy James Rech, Guillaume Freychet, Priyanka Ketkar, Thomas Ferron, Eliot Gann, Matt Gerbert, Lars Thomsen, Christopher R. McNeill, Alexander Hexemer, Dean M. DeLongchamp, Wei You, Cheng Wang, and Brian A. Collins, In Prep. (2026)
+
+\section{Attributions}\label{attributions-2}
+
+B.C. and O.A. conceived the study. O.A., A.A., V.M., E.G., L.T., and T.F. collected, analyzed, and processed the initial data upload. J.J.R. and Z.X. synthesized polymer materials and aided H.H. in designing the molecule registry schema. T.F., E.G., M.G., C.R.M., A.H., D.M.D., W.Y., and C.W. worked with H.H. to design the NEXAFS schema, interaction, and analysis integration systems. H.H. wrote all code associated with the backend and front-end design and implementation of the database and wrote the manuscript with input from all authors.
+
+\section{Background and Summary}\label{background-and-summary}
+
+Resonant elastic and inelastic X-ray scattering techniques depend on optical constants that are derived from a material\textquotesingle s near edge X-ray absorption fine structure (NEXAFS), typically measured independently of the scattering experiment itself.\autocite{yan2013accurate,watts2014calculation} The index of refraction entering a diffraction, reflectivity or scattering calculation carries whatever noise, miscalibration, or normalization artifact is present in the spectrum it was derived from, so a model built on a poorly measured NEXAFS spectrum inherits those defects. Remeasuring NEXAFS on every sample ahead of a scattering measurement is time consuming and not always feasible, particularly for multicomponent blends and layered films, so researchers need a way to judge an existing measurement before deciding whether to reuse it, rederive it, or collect a new one. This requires seeing the raw measurement alongside quality information sufficient to make that judgment, not only the optical constants calculated from it.
+
+Existing resources address parts of this problem. Individual dataset repositories released alongside a single publication, for example the calibrated NEXAFS spectra for common polymers released by Dhez, Ade, and Urquhart,\autocite{dhez2003calibrated} make spectra available but not programmatically accessible or interoperable with other repositories storing the same kind of data, so each repository requires its own bespoke tooling and meta-analyses across repositories are difficult. Platforms such as RefXAS\autocite{paripsa2024refxas} and the XASDB\autocite{chen2021database} database present queryable stores for hard X-ray absorption spectra but have limited applicability to the molecular and polymer materials that dominate resonant soft X-ray scattering, and most organic films carry optical anisotropy that only polarization dependent, angle resolved NEXAFS can quantify, which these hard X-ray databases do not collect. The Materials Project\autocite{horton2025accelerated} occupies a different position again, hosting computed K-edge XANES spectra for tens of thousands of inorganic materials, generated from relaxed crystal structures rather than measured from deposited films, with no polarization dependence recorded even where a molecular species is present.
+
+Addressing what these efforts leave open means solving several problems together rather than providing a place to upload files. A usable store of resonant X-ray optical models needs the raw spectrum and its derived optical constants held together as linked records, so a user can trace a tensor back to the measurement it came from and judge both at once; a shared normalization and processing convention, so spectra collected on different beamlines are directly comparable rather than merely co-located; a standardized representation of the optical constants themselves, reported as the real and imaginary parts of the index of refraction rather than left to each author\textquotesingle s choice of dielectric function or absorption cross section; quantitative data quality metrics that replace visual inspection with an objective, reproducible basis for judging a spectrum\textquotesingle s signal to noise ratio, energy resolution, and normalization residual; full provenance, carrying a dataset\textquotesingle s instrument, sample preparation, and processing history forward so a result can be traced back to and reproduced from its original configuration; and a model of attribution that credits every contributor to a dataset\textquotesingle s collection, processing, and derivation, not only the author of the paper it eventually supports.
+
+X-ray Atlas is built around these requirements. It stores raw NEXAFS measurements and the optical constants derived from them as linked, versioned records, scores every contributed dataset against automated quality metrics, validates structural requirements at the time of upload, and deposits each dataset version to Zenodo under a persistent, versioned DOI. It reaches toward a further goal still in development, acting as a single point of access to the wider ecosystem of X-ray spectral resources by surfacing or linking the Materials Project, RefXAS, and similar repositories from within the same search a user runs against its own holdings, so a researcher need not already know which of several disconnected repositories holds the data they want.
+
+Within this dissertation the database answers a need that the preceding chapters expose. The optical model of Chapter 4 starts from an angle-resolved NEXAFS dataset of ZnPc deposited in X-ray Atlas (accession 193bc0c5), and Chapter 5 shows that NEXAFS of Alq3 films prepared under nearly identical conditions differs in relative peak intensities and in a transition near 284 eV. A spectrum taken from elsewhere must therefore be judged before it is reused, with any analysis built on it traceable to the exact revision it used.
+
+\section{\texorpdfstring{Methods}{Methods}}\label{figmarker31x-figmarker32x-methods}
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=\linewidth]{fig6-1}
+  \caption[Simplified entity relationship diagram of the X-ray Atlas data model.]{Simplified entity relationship diagram of the X-ray Atlas data model. Boxes correspond to the record types a user queries; the production schema normalizes several of these into additional tables for workflow and provenance tracking.}
+  \label{fig:6.1}
+\end{figure}
+
+
+\textbf{Simplified data model.} X-ray Atlas is implemented as a relational database whose full schema spans more than twenty tables, most of which exist for workflow bookkeeping (collaboration permissions, background synchronization queues, dashboard caches) rather than for the scientific record itself. Figure~\ref{fig:6.1} collapses that implementation schema to the eight record types a user of the data queries against. A molecule record carries chemical identity (IUPAC name, InChI, SMILES, chemical formula, CAS number, PubChem CID, and searchable synonyms); a sample record links a molecule to a physical specimen through its processing route (dry or solvent deposition method, solvent, substrate, patterning layer, nominal thickness, vendor); an experiment record is one dataset, carrying the facility and instrument it was collected on, the absorption edge (target atom and core level), the detection mode (total electron yield, partial electron yield, fluorescence yield, or transmission), the polarization geometry, the calibrationmethod, and a three part version number; spectrum point records carry the measured quantities themselves, one row per photon energy per polarization geometry. Validation and quality records, Zenodo deposit records, contributor records, and linked publication records attach to each experiment and are described below.
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=\linewidth]{fig6-2}
+  \caption[From raw signal to optical constants for the ZnPc dataset used in Chapter 4.]{From raw signal to optical constants for the ZnPc dataset used in Chapter 4. a) Raw total electron yield at θ = 54.7° with the pre-edge (270 to 282 eV) and post-edge (320 to 330 eV) windows shaded. b) Zero-one normalization of every polarization geometry, from θ = 20° (red) to 90° (black), with each pre-edge mean set to 0 and one scale, the inverse median edge jump, shared by all geometries. c) Mass absorption of the θ = 54.7° spectrum after bare-atom normalization (black) against the bare-atom absorption of ZnPc (red, dashed). d) Isotropic β from the mass absorption in c (black) and its Kramers-Kronig partner δ (red) at ρ = 1.64 g cm−3.}
+  \label{fig:6.2}
+\end{figure}
+
+
+\textbf{Normalization and NEXAFS channels.} Figure~\ref{fig:6.2} shows how X-ray Atlas derives optical constants from an uploaded measurement, here the ZnPc dataset used in Chapter 4 (accession 193bc0c5). The raw total electron yield (Fig.~\ref{fig:6.2}a) carries the incident flux, the detector response, and the sample geometry in its absolute scale, so only its shape is meaningful. Two windows far from resonance, chosen by the contributor and here set to 270 to 282 eV before the edge and 320 to 330 eV after it, anchor every later step.\autocite{watts2006methods} The optical density channel subtracts the mean pre-edge signal of each geometry and divides every geometry by one shared scale, the inverse of the median edge jump (Fig.~\ref{fig:6.2}b). The shared scale places the post-edge at unity to within the spread of edge jumps between geometries, 0.9 percent for this dataset, while preserving the relative dichroism. Because the scale is always positive, no trace is ever inverted. For ZnPc the \(\pi^{*}\) resonances near 285 eV are strongest at \(\theta\) = 90° and the \(\sigma^{*}\) band above 290 eV at \(\theta\) = 20°, the linear dichroism of the edge-on film analyzed in Fig.~\ref{fig:2.8}. At \(\theta\) = 54.7° the factor \(3\cos^{2}\theta - 1\) vanishes, and with it the dichroism of a uniaxial film\autocite{stohr2010nexafs}, so the spectrum at this angle supplies the isotropic response. The mass absorption channel places that spectrum on an absolute scale with a positive scale and an offset that match its window means to the bare-atom mass absorption of the molecular formula, computed from the Henke tables\autocite{henke1993x}, in the same two windows (Fig.~\ref{fig:6.2}c). The imaginary index then follows as \(\beta = \lambda\rho\mu_{m}/(4\pi)\) for a stated density, here \(\rho\) = 1.64 g cm\(^{- 3}\), and \(\delta\) follows from the Kramers-Kronig transform of \(\beta\) embedded in the bare-atom \(\beta\) from 10 eV to 30 keV,\autocite{watts2014calculation} as in Fig.~\ref{fig:2.5}b (Fig.~\ref{fig:6.2}d). Each channel is stored with the window choices that produced it, so a later change of window creates a new dataset revision (Fig.~\ref{fig:6.4}).
+
+In equation form, for the raw trace \(I_{g}(E)\) of geometry \(g\) with pre-edge mean \({\bar{I}}_{g}^{pre}\) and edge jump \(J_{g} = {\bar{I}}_{g}^{post} - {\bar{I}}_{g}^{pre}\), the optical density is \({OD}_{g}(E) = \left( I_{g}(E) - {\bar{I}}_{g}^{pre} \right)/\widetilde{J}\) with \(\widetilde{J} = {median}_{g}\, J_{g}\). The mass absorption is \(\mu_{m}(E) = a\, OD(E) + b\), with \(a > 0\) and \(b\) chosen so that the window means of \(\mu_{m}\) equal those of the bare-atom mass absorption \(\mu_{m}^{atom}(E)\) in the pre-edge and post-edge windows. The imaginary index is \(\beta(E) = \lambda\rho\mu_{m}(E)/(4\pi)\), with \(\delta(E)\) following from the Kramers-Kronig relation of Chapter 2.
+
+\textbf{Angle convention.} Angle-resolved NEXAFS can be reused only if the geometry of each trace is recorded without ambiguity, and published spectra report geometry variously as the X-ray incidence angle, the sample tilt, or the field angle, measured from either the surface or its normal. X-ray Atlas stores the orientation of the electric field itself (Fig.~\ref{fig:6.3}). The polar angle \(\theta\) is measured from the sample normal \(\widehat{\mathbf{n}}\) to \(\mathbf{E}\), while the azimuth \(\phi\) is measured in the sample plane from the reference axis \(\widehat{\mathbf{x}}\) to the projection of \(\mathbf{E}\). This is the convention of Fig.~\ref{fig:2.8} and Chapter 4, in which \(\theta\) = 90° places \(\mathbf{E}\) in the film plane, so the expressions of Stöhr used in Chapter 1\autocite{stohr2010nexafs} apply to stored angles without conversion. Each trace keeps its ordered \((\theta,\phi)\) pair in the fields e\_field\_polar and e\_field\_azimuth, so geometries such as (90°, 45°) and (45°, 90°) remain distinct records, as they must for biaxial films in which the azimuth matters. Polar angles from −360° to 360° are accepted so that laboratory motor angles can be entered directly, and when the angle columns are omitted, the trace takes a single fixed geometry set in the contribution form.
+
+\textbf{Molecular identity resolution.} Chemical identity is resolved through InChI, SMILES, CAS number, and PubChem CID rather than through a free text name, since the same compound is commonly described by several shortened or trade names in the literature, particularly for newly engineered chemistries.Synonyms are stored against a single canonical molecule record and are searchable, so a contributor uploading under an unfamiliar name is still mapped to the correct underlying record. Molecules are further organized into hierarchical tags (for example, organic photovoltaic small molecule donor) that group chemically or functionally related compounds for browsing.
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=\linewidth]{fig6-3}
+  \caption[Polarization geometry stored with every trace.]{Polarization geometry stored with every trace. The incident wave (red) carries the electric field E, with θ the polar angle of E from the sample normal n̂ and φ its azimuth in the sample plane measured from x̂. Each trace keeps its ordered (θ, φ) pair, so geometries such as (90°, 45°) and (45°, 90°) remain distinct records.}
+  \label{fig:6.3}
+\end{figure}
+
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=\linewidth]{fig6-4}
+  \caption[Contribution workflow for a new dataset.]{Contribution workflow for a new dataset. A contributor signs in with ORCID, resolves the molecule by InChI, SMILES, CAS number, or PubChem CID, describes the sample processing route and the experiment, and maps the columns of each uploaded CSV trace. Structural validation (red) returns errors and stores nothing for a malformed upload. Accepted uploads are converted to optical density, mass absorption, β, and δ, scored by the quality metrics, recorded as revision 1.0.0 with a checksum of the derived columns, deposited to Zenodo under a versioned DOI, and published. A later renormalization creates a new revision and a new Zenodo version (gray, dashed).}
+  \label{fig:6.4}
+\end{figure}
+
+
+\textbf{Contribution workflow.} Each uploaded trace is a table of photon energy measurements. The contribution interface maps comma separated value (CSV) column headers, matched flexibly rather than requiring an exact header name, onto spectrum point rows, and requires photon energy to increase strictly monotonically within a trace. Angle resolved uploads are stored as separate traces per polarization geometry when the azimuthal and polar angle columns vary across the upload, or as a single fixed geometry set in the contribution form when those columns are omitted. Raw absorption, optical density, mass absorption, and the real and imaginary parts of the index of refraction are persisted at ingestion or recalculation, each with an optional uncertainty column; quantities that are trivially derived from these in the browser, such as the imaginary part of the atomic scattering factor, are computed on demand and never written back to the database.
+
+Figure~\ref{fig:6.4} follows a dataset from sign-in to publication, with each stage collecting one record type of the data model in Fig.~\ref{fig:6.1} in the order in which later stages depend on it. The contributor authenticates through ORCID, so attribution attaches to a persistent identity from the start, then resolves the molecule by a structural identifier rather than a name, describes the sample processing route and the experiment (facility, absorption edge, detection mode, and geometry), and maps the columns of each uploaded trace. Structural validation is the single gate between the contributor and the database. A trace with non-monotonic energies, missing metadata, or inconsistent geometry labels is returned with its errors and nothing is stored, so an incomplete record never becomes visible to other users. A trace that passes is converted into the channels of Fig.~\ref{fig:6.2}, scored by the quality metrics described under Technical Validation, and recorded as revision 1.0.0 together with a checksum of its derived columns. The revision is deposited to Zenodo under a versioned DOI before the dataset becomes public, so every public dataset is citable from its first appearance. The raw signal is immutable from this point, but the processing is not. A change that alters a derived quantity, such as a new normalization window, returns the dataset to the derivation step and produces a new revision and a new Zenodo version under the same concept DOI (Fig.~\ref{fig:6.4}, dashed).
+
+\textbf{Versioning and data deposition.} The underlying raw experimental signals are immutable; however, processing choices such as normalization windows, peak assignments, and similar processing choices are routinely refined after the initial upload. Only a change that alters a derived numerical quantity (\(\beta(E),\delta(E),\ f_{1}(E),\ \).etc) increments the dataset\textquotesingle s major, minor, or patch version; contributor and attribution changes do not. Every version increment is recorded as an immutable revision carrying the kind of change (an initial upload, a normalization change, a Kramers-Kronig calculation or recalculation, or an auxiliary file addition or removal) and a checksum of the derived columns, so a specific configuration can always be recovered. Each version increment is mirrored automatically as a new version deposited to Zenodo under the dataset\textquotesingle s concept DOI, giving every dataset a persistent, versioned citation independent of the X-ray Atlas web application\textquotesingle s own availability.
+
+\textbf{Attribution.} Contributors authenticate through their ORCID iD, with a dataset\textquotesingle s contributor list built from that identity rather than a free text author field. A contributor is recorded with a role (collection, processing, or curation) and a claim status, so a collaborator can be added to a dataset by a colleague and later confirm or decline that attribution themselves. Larger beamtime collaborations can be recorded as an attribution team with a principal investigator, an experiment lead, and a member list, so a single collection run that produced many datasets does not require re-entering the same contributor list on every upload. A further, optional layer lets users construct versioned, independently authored optical models (peak assignments and optical tensors fit to one or more raw datasets), each signed off by its listed authors and citable on its own, separate but trackable back to the original experimental measurement.
+
+\textbf{Authentication.} Reading public data requires no account. Contributors sign in through ORCID, so every record they create is tied to a persistent researcher identity. Passkeys provide passwordless sign-in. Actions that cannot be undone or that change ownership, such as merging or deleting datasets and issuing a command-line credential, additionally require a passkey confirmation within the preceding two hours. Administrator actions require a higher assurance level still. Command-line credentials carry read or write scope, are attached only to the host that issued them, and can be revoked by their owner.
+
+\section{Data Records}\label{data-records}
+
+Table~\ref{tab:6.1} lists the fields of the two record types most users of the database will query directly, the experiment (dataset) record and its spectrum points, alongside their units and source. X-ray Atlas currently hosts 13 molecules, 47 experiments, and 132,419 spectrum points, contributed by 12 registered users across 3 facilities. Data are stored and served from a hosted relational database (PostgreSQL) and are additionally deposited to Zenodo on every version increment, so a dataset remains citable and retrievable independent of the X-ray Atlas application\textquotesingle s own uptime. Contributed datasets are licensed under CC BY 4.0; the application code that serves them is licensed separately under the MIT license.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2297}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5552}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2151}}@{}}
+\caption{Core fields of the experiment and spectrum point records. The production schema stores several of these as separate, normalized tables; this table lists the field as it is queried, not its physical storage location.}\label{tab:6.1}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Field}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Description}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Source}
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Field}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Description}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Source}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\begin{minipage}[t]{\linewidth}\raggedright
+Photon energy\\
+(eV)\strut
+\end{minipage} & Incident photon energy of the measurement & contributor upload \\
+Raw absorption (arb.) & Raw measured absorption, including incident beam intensity, and measurement uncertainties. & contributor upload \\
+\begin{minipage}[t]{\linewidth}\raggedright
+Optical density\\
+(arb.)\strut
+\end{minipage} & Normalized absorption, with propagated uncertainty & derived at ingestion \\
+\begin{minipage}[t]{\linewidth}\raggedright
+Mass absorption\\
+(cm\textsuperscript{2}/g)\strut
+\end{minipage} & Bare atom normalized mass absorption computed from the optical density, with propagated uncertainty & derived at ingestion \\
+Index of refraction, \(\beta(E)\) & Imaginary part of the index of refraction, with propagated uncertainty & derived at ingestion \\
+Index of refraction, \(\delta(E)\) & Kramers-Kronig transform of beta, with propagated uncertainty & derived at ingestion \\
+Polarization geometry \(({^\circ})\) & Sample and polarization orientation for the trace & contributor upload \\
+Absorption edge & Target atom and core level (K, L1 to L3, M1 to M3) & contributor upload \\
+Detection mode & Total electron yield, partial electron yield, fluorescence yield, or transmission & contributor upload \\
+Facility and instrument & Collection facility, beamline, and instrument status & contributor upload \\
+Sample processing route & Deposition method, solvent, substrate, patterning layer, nominal thickness, vendor & contributor upload \\
+\begin{minipage}[t]{\linewidth}\raggedright
+Dataset version\\
+(major.minor.patch)\strut
+\end{minipage} & Version of this dataset\textquotesingle s processing and derived values & generated \\
+Zenodo DOI & Persistent, versioned citation for this dataset version & generated at publish \\
+Contributor ORCID and role & Identity and role of each person credited on the dataset & contributor upload \\
+Linked publication DOI & Source or citing publication associated with the dataset & contributor upload \\
+\end{longtable}
+
+
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=\linewidth]{fig6-5}
+  \caption[X-ray Atlas molecule record UI.]{X-ray Atlas molecule record UI. Molecules are linked to external CAS and PubChem registries, and taxonomical information is stored. Molecule synonyms provide a searchable many to one representation to serve the wide community with multiple names of the same molecule. Tags provide hierarchical groupings of common or similar molecules. Users can contribute edit or modify records, as well as favorite records to make them easier to return to.}
+  \label{fig:6.5}
+\end{figure}
+
+
+\section{Technical Validation}\label{technical-validation}
+
+Three independent checks apply to a contributed dataset, operating at different points in its life to capture different errors.
+
+\textbf{Structural validation at upload}. At the time of upload the datasets are validated against the schema with type checking enforced. Datasets must have monotonic photon energies for each polarization geometry, experimental metadata (facility, instrument, and edge) and consistent geometry labeling for angle resolved uploads. These faults are recorded during upload preventing malformed or incomplete data from entering the database.
+
+\textbf{Automated quality metrics.} Once ingested, a dataset is scored against quantitative quality metrics computed from the data itself. Three sub-scores, each mapped onto 0 to 100 by fixed monotone breakpoints, are computed for every dataset. Energy sampling is scored from the median spacing between adjacent energies, from 100 at 0.028 eV or finer down to 8 beyond 0.52 eV. Signal to noise is scored from the ratio of the mean absolute signal to its standard deviation over the populated samples, from 14 below a ratio of 2.2 to 100 above 40. Normalization quality is scored from the pooled mean absolute deviation of the optical density from 0 in the pre-edge window and from 1 in the post-edge window, from 100 at0.012 or less down to 6 beyond 0.32. The dataset score is the mean of the available sub-scores and is reported in four tiers, excellent at 86 or above, good from 66, fair from 38, and poor below 38.
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=\linewidth]{fig6-6}
+  \caption[X-ray Atlas NEXAFS Dataset UI.]{X-ray Atlas NEXAFS Dataset UI. Datasets store the full processing specifications to convert the raw measured signals into optical constants.}
+  \label{fig:6.6}
+\end{figure}
+
+
+\textbf{Peer review and publication cross reference.} Cross referencing data stored in the database against either an original publication or a new publication featuring it provides additional confidence that the data quality meets the standards of peer review. This added confidence implies that sample preparation follows a usual approach, and data collection and analysis follows from the standards for a given facility and instrumentation, while providing a direct reference back to the original manuscript bearing more detailed methods and conclusions regarding the data.
+
+\section{Usage Notes}\label{usage-notes}
+
+The web interface at xrayatlas.wsu.edu supports browsing and searching by molecule, facility, edge, or tag and shows each dataset's quality metrics alongside its trace. Beyond the browser, X-ray Atlas data is built to be addressed programmatically. A python package, distributed as xrayatlas on the Python Package Index, exposes the same molecule, datasets and optical model records available through the website to scripted analysis, letting a researcher pull a dataset directly into a notebook or an analysis pipeline rather than downloading files by hand. A companion command line interface (CLI), shipped as a single compiled binary in the manner of tools such as the Hugging Face CLI, gives the same access from the terminal for scripting and automation. This programmatic layer is deliberate, framing the registry alongside platforms such as Hugging Face and Weights and Biases rather than as a bespoke scientific database, so that an analysis agent or training pipeline can discover and pull a relevant NEXAFS dataset the same way it would pull a pretrained model, with provenance and attribution carried along automatically rather than left for the user to reconstruct.
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=\linewidth]{fig6-7}
+  \caption[X-ray Atlas User profile.]{X-ray Atlas User profile. Minimal user information is stored only enough to ensure connection and authentication though ORCID. Users can choose to create research groups and link other socials if they wish to. Contribution metrics are stored with similar calculation as though Google Scholar and similar sites. Users have full autonomy to edit how or if they appear to the rest of the community as well as maintain edit and remove data they contribute.}
+  \label{fig:6.7}
+\end{figure}
+
+
+Citation follows two conventions depending on scope. An individual dataset is cited by its own versioned DOI, in the form of the dataset name and DOI, adapted from the original publication, hosted by X-ray Atlas; the entire collection is cited by a collection level DOI together with the date accessed.
+
+\section{\texorpdfstring{Programmatic Access}{Programmatic Access}}\label{figmarker40x-programmatic-access}
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=\linewidth]{fig6-8}
+  \caption[Architecture of X-ray Atlas and the lineage of optical models.]{Architecture of X-ray Atlas and the lineage of optical models. a) X-ray Atlas holds the database and files behind the web application and the REST interface /api/v1, with ORCID handling sign-in and Zenodo issuing DOIs. The browser reaches the web application, while the xrayatlas Python package and the xatlas command-line client (red) share the REST interface. b) An optical model pins a dataset revision, the default model can be forked into independently versioned models (red), and a citation lists the model, its dataset revisions, and every ancestor in the chain.}
+  \label{fig:6.8}
+\end{figure}
+
+
+The programmatic layer described above rests on the architecture in Fig.~\ref{fig:6.8}a. A single store of records and files sits behind two interfaces. The web application serves people through the browser, and the REST interface /api/v1 serves programs, shared by the xrayatlas Python package and the xatlas command-line client so that a script and a terminal session see the same records under the same permissions. Identity and persistence are delegated to external services, ORCID for sign-in and attribution and Zenodo for versioned DOIs, so neither depends on the availability of X-ray Atlas itself. The client never fits peaks, computes optical constants, or normalizes spectra. Normalization is computed by the server, so every client receives the same derived channels. Optical models extend the same versioning from data to analysis (Fig.~\ref{fig:6.8}b). A model, a set of peak assignments with \(\delta\) and \(\beta\) for each tensor component on a shared energy axis, fit by its authors to one or more datasets in the manner of Chapter 5 and of the bond-traceable tensors of Murcia et al.\autocite{murcia2026quantitative} , pins the exact dataset revisions it was built from. The default model for a dataset can be forked, with each fork versioned and authored independently while keeping a link to its parent. A citation of any model lists the model, the dataset revisions it pins, and every ancestor in its chain, so credit reaches each contributor to the measurement, the processing, and the analysis. Likewise, a result built on a model can be traced back to the raw spectra behind it. The xrayatlas package is released on PyPI and remains under active development.
+
+The package requires Python 3.10 or newer and installs with pip install xrayatlas or uv add xrayatlas. Authentication is shared with the command-line client, so a single xatlas login writes the credential that both read. The listing below pulls the ZnPc dataset of Chapter 4, publishes an optical model built on it, forks and compares that model, and pins the session to the exact revisions it used. The xatlas client exposes the same operations from the terminal. xatlas search, xatlas molecules, and xatlas datasets find and fetch records, xatlas upload contributes a dataset through the validation of Fig.~\ref{fig:6.4}, xatlas models reads, pushes, and publishes optical models, and xatlas lock and xatlas restore write and replay the same lockfile as the Python client, so an analysis recorded in one can be reproduced in the other.
+
+\textbf{Query the database}. Using the CLI it is possible to directly query the database, applying filters and identifying the datasets that are useful or interesting. Once found these datasets can be stored locally in tabular forms such as CSV files, parquet files, or as local SQLite snapshots.
+
+bash
+
+\emph{\# Browse the catalog by molecule, edge, and facility}
+
+xatlas molecules tree phthalocyanine
+
+xatlas molecules tree -\/-group edge,molecule,facility
+
+\emph{\# Read-only SQL on the public spectrum\_points relation}
+
+xatlas query "SELECT atlas\_dataset\_id, molecule\_id, facility\_name, COUNT(*) AS n\_points
+
+FROM spectrum\_points
+
+WHERE edge\_label = \textquotesingle C(K)\textquotesingle{} AND facility\_name ILIKE \textquotesingle\%light source\%\textquotesingle{}
+
+GROUP BY atlas\_dataset\_id, molecule\_id, facility\_name
+
+ORDER BY n\_points DESC"
+
+\emph{\# The same SQL on a local SQLite snapshot}
+
+xatlas datasets fetch d/193bc0c5 -\/-out ./data -\/-format sqlite
+
+xatlas query -\/-db ./data/spectra.sqlite \textbackslash{}
+
+"SELECT DISTINCT theta\_deg, phi\_deg FROM spectrum\_points ORDER BY theta\_deg"
+
+The same queries are available in Python, where lightweight dataset summaries can be searched by molecule, edge, DOI, or Atlas identifier without downloading any spectra, and a local snapshot can be queried directly with standard tools such as pandas.
+
+python
+
+import sqlite3
+
+import pandas as pd
+
+import xrayatlas as xa
+
+\emph{\# Lightweight summaries filtered by molecule, edge, DOI, or Atlas id; no spectra are downloaded}
+
+for summary in xa.datasets.search(molecule\_id=molecule\_id): \emph{\# UUID from the SQL above}
+
+print(summary.atlas\_dataset\_id, summary.edge\_label,
+
+summary.spectrum\_point\_count, summary.dataset\_doi)
+
+\emph{\# Query the local snapshot directly with pandas}
+
+with sqlite3.connect("data/spectra.sqlite") as con:
+
+iso = pd.read\_sql(
+
+"SELECT energy\_ev, mass\_absorption, beta FROM spectrum\_points "
+
+"WHERE abs(theta\_deg - 54.7) \textless{} 0.1 ORDER BY energy\_ev",
+
+con,
+
+)
+
+\textbf{Accessing datasets}. Once a dataset is identified it can be pulled into a coding environment such as Python using the xrayatlas package. From there metadata information such as versions, molecule information, publication information and more can be accessed, along with the spectral data including both the raw uploaded data and the derived quantities such as optical constants.
+
+python
+
+import xrayatlas as xa
+
+ds = xa.datasets.get("d/193bc0c5") \emph{\# current version, cached by version}
+
+pinned = xa.datasets.get("d/193bc0c5", "1.0.0") \emph{\# pinned version}
+
+print(ds.molecule\_name, ds.edge, ds.facility, ds.instrument, ds.version)
+
+print(ds.publication\_dois)
+
+spec = ds.spectra() \emph{\# energy\_ev, theta\_deg, phi\_deg, raw\_abs, i0,}
+
+\emph{\# od, mass\_absorption, beta, delta}
+
+raw = ds.spectra(raw=True) \emph{\# uploaded signal and I0 only}
+
+geometries = ds.geometries() \emph{\# ordered (theta\_deg, phi\_deg) pairs; (90, 45) != (45, 90)}
+
+\emph{\# One trace per geometry, and the isotropic (magic-angle) spectrum}
+
+traces = \{geom: trace for geom, trace in spec.groupby({[}"theta\_deg", "phi\_deg"{]})\}
+
+iso = spec{[}(spec.theta\_deg - 54.7).abs() \textless{} 0.1{]}
+
+ds.aux\_files.download("aux/", kind="sample") \emph{\# sample-aux/ files from the dataset bundle}
+
+models = ds.models(scope="public") \emph{\# optical models that link this dataset}
+
+with open("znpc.bib", "w") as f:
+
+f.write(ds.bibtex())
+
+\textbf{Working with datasets}. The package makes available tools to directly interact with a dataset, including modifying normalization schemes and peak assignments, before pushing to the remote database. Normalization windows can be set once for every channel or separately for the optical density, the mass absorption, and β, and peak assignments from an independent fit are validated row by row before upload. A change to the normalization of a dataset creates a new revision and a new Zenodo version, so earlier analyses that pinned the previous version remain reproducible.
+
+python
+
+import pandas as pd
+
+import xrayatlas as xa
+
+\emph{\# One pre-edge and post-edge window pair for every channel}
+
+norm = xa.Normalization(pre=(270.0, 282.0), post=(320.0, 330.0))
+
+\emph{\# Or a separate pair for each channel}
+
+norm\_pc = xa.Normalization(
+
+scope="per\_channel",
+
+od=xa.WindowPair(pre=(270.0, 282.0), post=(320.0, 330.0)),
+
+massabsorption=xa.WindowPair(pre=(270.0, 282.0), post=(320.0, 330.0)),
+
+beta=xa.WindowPair(pre=(270.0, 282.0), post=(320.0, 330.0)),
+
+)
+
+\emph{\# Peak assignments from your own fit; unrecognized columns are stored as each peak\textquotesingle s params}
+
+peaks = pd.DataFrame(\{
+
+"center\_ev": {[}284.2, 285.1, 287.1, 288.9{]},
+
+"kind": {[}"pi-star", "pi-star", "other", "other"{]},
+
+"transition": {[}"C2 1s -\textgreater{} MO 117", "C3 1s -\textgreater{} MO 119",
+
+"C2 1s -\textgreater{} MO 124", "C1 1s -\textgreater{} MO 124"{]},
+
+"amplitude": amplitudes, \emph{\# arrays of length 4 from the fit}
+
+"width": widths,
+
+"fit\_tool": "refloxide",
+
+\})
+
+checked = xa.validate\_peaks(peaks) \emph{\# ValidationError names the offending row and column}
+
+bash
+
+\emph{\# Change the dataset\textquotesingle s own normalization (a new revision and a new Zenodo version)}
+
+xatlas datasets push d/193bc0c5 -\/-normalization norm.json -\/-dry-run
+
+xatlas datasets status d/193bc0c5
+
+Uploading datasets and optical models. The Python package and the command-line client both provide handles for uploading new datasets and new optical models into the database. An upload requires a credential with write scope and can first be run as a dry run, which applies the same structural validation as a real upload without writing anything. The file name of a contributed spectrum encodes its edge, detection mode, and beamline, so that these fields are set consistently at ingestion.
+
+bash
+
+\emph{\# A credential with write scope, then a dry run of the upload}
+
+xatlas auth login -\/-write -\/-name "lab laptop"
+
+xatlas upload C-K\_TEY\_ALS\_5.3.2\_lab\_vendor.csv -\/-molecule "zinc phthalocyanine" \textbackslash{}
+
+-\/-process-method dry -\/-dry-run \emph{\# six-token name sets edge, mode, and beamline}
+
+\emph{\# Pull a published model to disk}
+
+xatlas models pull k7m2xq4n -\/-out ./znpc-model
+
+With a dataset uploaded, new optical models can be defined by modifying the normalization scheme and the method by which the optical tensor is derived. Building a model forks the default model of the dataset, attaches a normalization, peak assignments, and a tensor in the molecular or film frame, and publishes an immutable version with its own citation. A published model can itself be forked and refined, for instance with peak parameters refined against reflectivity, and the lineage of every version travels with its citation together with the dataset revisions it pins. A lock file records every dataset and model revision used in an analysis so that the session can be replayed later.
+
+python
+
+import numpy as np
+
+import xrayatlas as xa
+
+ds = xa.datasets.get("d/193bc0c5")
+
+\emph{\# Complex payload with delta in the real part and beta in the imaginary part, (n\_energy, 2)}
+
+values = np.stack({[}delta\_xx + 1j * beta\_xx, delta\_zz + 1j * beta\_zz{]}, axis=1)
+
+with xa.model(datasets={[}ds{]}, title="ZnPc ML-DFT tensor") as builder: \emph{\# forks the default model}
+
+builder.normalization = norm
+
+builder.peaks = peaks
+
+builder.tensor = xa.Tensor.from\_array(values, energy\_ev=energy, components={[}"xx", "zz"{]},
+
+frame="molecular", units="1")
+
+model = builder.publish() \emph{\# explicit and never retried; versions are immutable}
+
+model.set\_visibility("public") \emph{\# private, shared, or public}
+
+channels = model.normalized(ds) \emph{\# server-computed od, mass\_absorption, beta}
+
+print(model.cite()) \emph{\# BibTeX of this published version}
+
+\emph{\# Fork, publish the next version, and compare the two}
+
+with model.fork(title="ZnPc ML-DFT tensor, reflectivity refined") as fork:
+
+fork.peaks = refined\_peaks
+
+refined = fork.publish()
+
+aligned = xa.compare({[}model, refined{]}, tolerance\_ev=0.2).peaks
+
+lineage = refined.lineage() \emph{\# visible ancestors, newest first}
+
+\emph{\# Pin every dataset and model revision used in this session, and replay it later}
+
+xa.lock("analysis.lock")
+
+xa.restore("analysis.lock")
+
+\section{Code Availability}\label{code-availability}
+
+The X-ray Atlas web application, database schema, Python package, and command line client are developed in the open at github.com/WSU-Carbon-Lab/xray-atlas. Application code is licensed under the MIT license; contributed datasets are licensed separately under CC BY 4.0.

@@ -1,0 +1,43 @@
+% Preamble. Compile with LuaLaTeX and biber (latexmk does both, see .latexmkrc).
+% WSU: 1 in margins, page numbers centered 0.5 in from the bottom edge.
+\usepackage[letterpaper,margin=1in,footskip=0.5in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{fontspec}
+\usepackage[mathbf=sym]{unicode-math}
+\setmathfont{Latin Modern Math}
+\usepackage{newunicodechar}
+\input{unicode-greek}
+\usepackage{setspace}
+\onehalfspacing  % WSU minimum is 1.5 spacing for the body; double spacing is recommended
+\usepackage{graphicx}
+\graphicspath{{../figures/dissertation/word-export/}{../figures/dissertation/}}
+\usepackage{array,calc,booktabs,longtable,multirow}
+\usepackage[font={small,stretch=1},labelfont=bf]{caption}  % captions single-spaced throughout
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage[
+  backend=biber,
+  style=numeric-comp,
+  sorting=none,
+  autocite=superscript,
+  giveninits=true,
+  maxbibnames=5,
+  minbibnames=1,
+  url=false,
+  isbn=false,
+  eprint=false
+]{biblatex}
+\addbibresource{references.bib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{bookmark}
+\renewcommand{\contentsname}{Table of Contents}
+
+% Commands emitted by the pandoc conversion of the Word draft.
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Document metadata used by the front matter.
+\newcommand{\thesistitle}{Physically Constrained Optical Tensors for Resolving Buried Molecular States by Resonant Soft X-ray Scattering}
+\newcommand{\thesisauthor}{Harlan D. Heilman}
+\newcommand{\thesisdate}{December 2026}
+\newcommand{\thesisyear}{2026}

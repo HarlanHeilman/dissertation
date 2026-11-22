@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="380.16pt" height="236.16pt" viewBox="0 0 380.16 236.16" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-06T09:59:19.216745</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 236.16 
+L 380.16 236.16 
+L 380.16 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 32.832 212.334545 
+L 249.984 212.334545 
+L 347.328 149.498182 
+L 130.176 149.498182 
+z
+" clip-path="url(#p52d1c94605)" style="fill: #d0d0d0; stroke: #000000; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 210.674832 151.763264 
+C 207.634239 149.895865 204.317695 148.451963 200.830078 147.477219 
+C 197.342462 146.502475 193.720928 146.007273 190.08 146.007273 
+" clip-path="url(#p52d1c94605)" style="fill: none; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 253.728 180.916364 
+C 253.728 177.181525 249.356781 173.543503 241.260705 170.54024 
+C 233.164628 167.536978 221.763431 165.324178 208.742978 164.229042 
+" clip-path="url(#p52d1c94605)" style="fill: none; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 45.100158 124.141041 
+L 50.508023 119.862957 
+L 52.855951 118.227858 
+L 54.808608 117.152287 
+L 55.849137 116.805042 
+L 56.662212 116.779771 
+L 57.241061 117.08606 
+L 57.587253 117.721687 
+L 57.710639 118.672707 
+L 57.629004 119.913947 
+L 57.178786 122.239776 
+L 56.145605 125.953661 
+L 53.839824 133.720341 
+L 53.332371 136.127189 
+L 53.203132 137.435814 
+L 53.273297 138.462171 
+L 53.562546 139.178405 
+L 54.082757 139.567698 
+L 54.837586 139.624877 
+L 55.822336 139.35659 
+L 57.024125 138.781074 
+L 59.186732 137.408307 
+L 62.581608 134.854038 
+L 72.436395 127.095295 
+L 74.599003 125.722528 
+L 75.800791 125.147012 
+L 76.785542 124.878725 
+L 77.540371 124.935904 
+L 78.060582 125.325198 
+L 78.349831 126.041431 
+L 78.419996 127.067789 
+L 78.290757 128.376414 
+L 77.783304 130.783262 
+L 76.706965 134.558239 
+L 74.444342 142.263827 
+L 73.994124 144.589655 
+L 73.912489 145.830895 
+L 74.035875 146.781916 
+L 74.382067 147.417543 
+L 74.960916 147.723831 
+L 75.773991 147.69856 
+L 76.81452 147.351315 
+L 78.067635 146.703143 
+L 80.294947 145.238783 
+L 83.745489 142.605716 
+L 92.750992 135.48634 
+L 94.978304 134.02198 
+L 96.23142 133.373808 
+L 97.271949 133.026563 
+L 98.085024 133.001292 
+L 98.663873 133.30758 
+L 99.010065 133.943207 
+L 99.133451 134.894228 
+L 99.051816 136.135468 
+L 98.601598 138.461296 
+L 97.568417 142.175182 
+L 95.262636 149.941861 
+L 94.755183 152.34871 
+L 94.625944 153.657335 
+L 94.696109 154.683692 
+L 94.985358 155.399925 
+L 95.505569 155.789219 
+L 96.260398 155.846398 
+L 97.245148 155.578111 
+L 98.446937 155.002595 
+L 100.609544 153.629828 
+L 104.00442 151.075559 
+L 113.859208 143.316816 
+L 116.021815 141.944049 
+L 117.223603 141.368533 
+L 118.208354 141.100246 
+L 118.963183 141.157425 
+L 119.483394 141.546719 
+L 119.772643 142.262952 
+L 119.842808 143.289309 
+L 119.713569 144.597935 
+L 119.206116 147.004783 
+L 118.129777 150.77976 
+L 115.867154 158.485348 
+L 115.416936 160.811176 
+L 115.335301 162.052416 
+L 115.458687 163.003437 
+L 115.804879 163.639064 
+L 116.383728 163.945352 
+L 117.196803 163.920081 
+L 118.237332 163.572836 
+L 119.490447 162.924664 
+L 121.717759 161.460304 
+L 125.168301 158.827237 
+L 134.173804 151.707861 
+L 136.401116 150.243501 
+L 137.654232 149.595329 
+L 138.694761 149.248084 
+L 139.507836 149.222813 
+L 140.086685 149.529101 
+L 140.432877 150.164728 
+L 140.556263 151.115749 
+L 140.474628 152.356989 
+L 140.02441 154.682817 
+L 138.991229 158.396702 
+L 136.685448 166.163382 
+L 136.177995 168.57023 
+L 136.048756 169.878856 
+L 136.118921 170.905213 
+L 136.40817 171.621446 
+L 136.928381 172.01074 
+L 137.68321 172.067919 
+L 138.667961 171.799632 
+L 139.869749 171.224116 
+L 142.032356 169.851349 
+L 145.427232 167.297079 
+L 155.28202 159.538337 
+L 157.444627 158.16557 
+L 158.646415 157.590054 
+L 159.631166 157.321767 
+L 160.385995 157.378946 
+L 160.906206 157.76824 
+L 161.195455 158.484473 
+L 161.26562 159.51083 
+L 161.136381 160.819455 
+L 160.628928 163.226303 
+L 159.552589 167.00128 
+L 157.289966 174.706869 
+L 156.839748 177.032697 
+L 156.758113 178.273937 
+L 156.881499 179.224957 
+L 157.227691 179.860585 
+L 157.80654 180.166873 
+L 158.619615 180.141602 
+L 159.660144 179.794357 
+L 160.91326 179.146184 
+L 163.140572 177.681824 
+L 166.591113 175.048758 
+L 169.368594 172.805603 
+L 169.368594 172.805603 
+" clip-path="url(#p52d1c94605)" style="fill: none; stroke: #e0201b; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 255.983462 87.626444 
+L 255.983462 161.716364 
+" clip-path="url(#p52d1c94605)" style="fill: none; stroke-dasharray: 1.1,1.815; stroke-dashoffset: 0; stroke: #808080; stroke-width: 1.1"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 190.08 180.916364 
+L 255.983462 161.716364 
+" clip-path="url(#p52d1c94605)" style="fill: none; stroke-dasharray: 4.07,1.76; stroke-dashoffset: 0; stroke: #808080; stroke-width: 1.1"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 190.08 180.916364 
+Q 190.08 97.134545 190.08 14.713283 
+" style="fill: none; stroke: #000000; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 187.68 18.713283 
+L 190.08 14.713283 
+L 192.48 18.713283 
+z
+" style="stroke: #000000; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <!-- $\hat{n}$ -->
+    <g transform="translate(194.5728 18.589091)">
+     <text>
+      <tspan x="2.852112" y="-1.078125" style="font-size: 9.5px; font-family: 'Liberation Sans'">̂</tspan>
+      <tspan x="0" y="-0.359375" style="font-style: italic; font-size: 9.5px; font-family: 'Liberation Sans'">n</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="patch_6">
+    <path d="M 190.08 180.916364 
+Q 240.624 180.916364 290.098992 180.916364 
+" style="fill: none; stroke: #000000; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 286.098992 178.516364 
+L 290.098992 180.916364 
+L 286.098992 183.316364 
+z
+" style="stroke: #000000; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="text_2">
+    <!-- $\hat{x}$ -->
+    <g transform="translate(294.912 187.2)">
+     <text>
+      <tspan x="2.71875" y="-1.078125" style="font-size: 9.5px; font-family: 'Liberation Sans'">̂</tspan>
+      <tspan x="0" y="-0.453125" style="font-style: italic; font-size: 9.5px; font-family: 'Liberation Sans'">x</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="patch_7">
+    <path d="M 169.368594 172.805603 
+Q 177.135371 175.847138 183.635272 178.392554 
+" style="fill: none; stroke: #e0201b; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 180.785833 174.699223 
+L 183.635272 178.392554 
+L 179.035537 179.168727 
+z
+" style="fill: #e0201b; stroke: #e0201b; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="text_3">
+    <!-- incident beam, $\mathbf{k}$ -->
+    <g style="fill: #e0201b" transform="translate(45.100158 104.941041)">
+     <text>
+      <tspan x="0" y="-0.203125" style="font-size: 8px; font-family: 'Liberation Sans'; fill: #e0201b">i</tspan>
+      <tspan x="1.777344" y="-0.203125" style="font-size: 8px; font-family: 'Liberation Sans'; fill: #e0201b">n</tspan>
+      <tspan x="6.226562" y="-0.203125" style="font-size: 8px; font-family: 'Liberation Sans'; fill: #e0201b">c</tspan>
+      <tspan x="10.226562" y="-0.203125" style="font-size: 8px; font-family: 'Liberation Sans'; fill: #e0201b">i</tspan>
+      <tspan x="12.003906" y="-0.203125" style="font-size: 8px; font-family: 'Liberation Sans'; fill: #e0201b">d</tspan>
+      <tspan x="16.453125" y="-0.203125" style="font-size: 8px; font-family: 'Liberation Sans'; fill: #e0201b">e</tspan>
+      <tspan x="20.902344" y="-0.203125" style="font-size: 8px; font-family: 'Liberation Sans'; fill: #e0201b">n</tspan>
+      <tspan x="25.351562" y="-0.203125" style="font-size: 8px; font-family: 'Liberation Sans'; fill: #e0201b">t</tspan>
+      <tspan x="27.574219" y="-0.203125" style="font-size: 8px; font-family: 'Liberation Sans'; fill: #e0201b"> </tspan>
+      <tspan x="29.796875" y="-0.203125" style="font-size: 8px; font-family: 'Liberation Sans'; fill: #e0201b">b</tspan>
+      <tspan x="34.246094" y="-0.203125" style="font-size: 8px; font-family: 'Liberation Sans'; fill: #e0201b">e</tspan>
+      <tspan x="38.695312" y="-0.203125" style="font-size: 8px; font-family: 'Liberation Sans'; fill: #e0201b">a</tspan>
+      <tspan x="43.144531" y="-0.203125" style="font-size: 8px; font-family: 'Liberation Sans'; fill: #e0201b">m</tspan>
+      <tspan x="49.808594" y="-0.203125" style="font-size: 8px; font-family: 'Liberation Sans'; fill: #e0201b">,</tspan>
+      <tspan x="52.03125" y="-0.203125" style="font-size: 8px; font-family: 'Liberation Sans'; fill: #e0201b"> </tspan>
+      <tspan x="54.253906" y="-0.203125" style="font-weight: 700; font-size: 8px; font-family: 'Liberation Sans'; fill: #e0201b">k</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="patch_8">
+    <path d="M 190.08 180.916364 
+Q 223.031731 134.271404 254.637712 89.531427 
+" style="fill: none; stroke: #e0201b; stroke-width: 2.4; stroke-linecap: round"/>
+    <path d="M 250.36956 91.413678 
+L 254.637712 89.531427 
+L 254.28998 94.183209 
+z
+" style="fill: #e0201b; stroke: #e0201b; stroke-width: 2.4; stroke-linecap: round"/>
+   </g>
+   <g id="text_4">
+    <!-- $\mathbf{E}$ -->
+    <g style="fill: #e0201b" transform="translate(259.727462 85.88099)">
+     <text>
+      <tspan x="0" y="-0.4375" style="font-weight: 700; font-size: 11px; font-family: 'Liberation Sans'; fill: #e0201b">E</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 10px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: start" x="199.44" y="137.28" transform="rotate(-0 199.44 137.28)">θ</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 10px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: start" x="259.344" y="177.425455" transform="rotate(-0 259.344 177.425455)">φ</text>
+   </g>
+   <g id="text_7">
+    <!-- θ, polar angle of $\mathbf{E}$ from the sample normal.   φ, azimuth of $\mathbf{E}$ in the sample plane. -->
+    <g style="fill: #808080" transform="translate(36.576 228.043636)">
+     <text>
+      <tspan x="0" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">θ</tspan>
+      <tspan x="4.171143" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">,</tspan>
+      <tspan x="6.254883" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080"> </tspan>
+      <tspan x="8.338623" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">p</tspan>
+      <tspan x="12.509766" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">o</tspan>
+      <tspan x="16.680908" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">l</tspan>
+      <tspan x="18.347168" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">a</tspan>
+      <tspan x="22.518311" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">r</tspan>
+      <tspan x="25.015869" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080"> </tspan>
+      <tspan x="27.099609" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">a</tspan>
+      <tspan x="31.270752" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">n</tspan>
+      <tspan x="35.441895" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">g</tspan>
+      <tspan x="39.613037" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">l</tspan>
+      <tspan x="41.279297" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">e</tspan>
+      <tspan x="45.450439" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080"> </tspan>
+      <tspan x="47.53418" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">o</tspan>
+      <tspan x="51.705322" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">f</tspan>
+      <tspan x="53.789062" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080"> </tspan>
+      <tspan x="60.875244" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080"> </tspan>
+      <tspan x="62.958984" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">f</tspan>
+      <tspan x="65.042725" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">r</tspan>
+      <tspan x="67.540283" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">o</tspan>
+      <tspan x="71.711426" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">m</tspan>
+      <tspan x="77.958984" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080"> </tspan>
+      <tspan x="80.042725" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">t</tspan>
+      <tspan x="82.126465" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">h</tspan>
+      <tspan x="86.297607" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">e</tspan>
+      <tspan x="90.46875" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080"> </tspan>
+      <tspan x="92.55249" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">s</tspan>
+      <tspan x="96.30249" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">a</tspan>
+      <tspan x="100.473633" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">m</tspan>
+      <tspan x="106.721191" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">p</tspan>
+      <tspan x="110.892334" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">l</tspan>
+      <tspan x="112.558594" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">e</tspan>
+      <tspan x="116.729736" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080"> </tspan>
+      <tspan x="118.813477" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">n</tspan>
+      <tspan x="122.984619" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">o</tspan>
+      <tspan x="127.155762" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">r</tspan>
+      <tspan x="129.65332" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">m</tspan>
+      <tspan x="135.900879" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">a</tspan>
+      <tspan x="140.072021" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">l</tspan>
+      <tspan x="141.738281" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">.</tspan>
+      <tspan x="143.822021" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080"> </tspan>
+      <tspan x="145.905762" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080"> </tspan>
+      <tspan x="147.989502" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080"> </tspan>
+      <tspan x="150.073242" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">φ</tspan>
+      <tspan x="154.936523" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">,</tspan>
+      <tspan x="157.020264" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080"> </tspan>
+      <tspan x="159.104004" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">a</tspan>
+      <tspan x="163.275146" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">z</tspan>
+      <tspan x="167.025146" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">i</tspan>
+      <tspan x="168.691406" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">m</tspan>
+      <tspan x="174.938965" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">u</tspan>
+      <tspan x="179.110107" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">t</tspan>
+      <tspan x="181.193848" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">h</tspan>
+      <tspan x="185.36499" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080"> </tspan>
+      <tspan x="187.44873" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">o</tspan>
+      <tspan x="191.619873" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">f</tspan>
+      <tspan x="193.703613" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080"> </tspan>
+      <tspan x="200.789795" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080"> </tspan>
+      <tspan x="202.873535" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">i</tspan>
+      <tspan x="204.539795" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">n</tspan>
+      <tspan x="208.710938" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080"> </tspan>
+      <tspan x="210.794678" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">t</tspan>
+      <tspan x="212.878418" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">h</tspan>
+      <tspan x="217.049561" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">e</tspan>
+      <tspan x="221.220703" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080"> </tspan>
+      <tspan x="223.304443" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">s</tspan>
+      <tspan x="227.054443" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">a</tspan>
+      <tspan x="231.225586" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">m</tspan>
+      <tspan x="237.473145" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">p</tspan>
+      <tspan x="241.644287" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">l</tspan>
+      <tspan x="243.310547" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">e</tspan>
+      <tspan x="247.481689" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080"> </tspan>
+      <tspan x="249.56543" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">p</tspan>
+      <tspan x="253.736572" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">l</tspan>
+      <tspan x="255.402832" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">a</tspan>
+      <tspan x="259.573975" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">n</tspan>
+      <tspan x="263.745117" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">e</tspan>
+      <tspan x="267.91626" y="-0.5625" style="font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">.</tspan>
+      <tspan x="55.872803" y="-0.5625" style="font-weight: 700; font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">E</tspan>
+      <tspan x="195.787354" y="-0.5625" style="font-weight: 700; font-size: 7.5px; font-family: 'Liberation Sans'; fill: #808080">E</tspan>
+     </text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p52d1c94605">
+   <rect x="2.88" y="2.88" width="374.4" height="230.4"/>
+  </clipPath>
+ </defs>
+</svg>

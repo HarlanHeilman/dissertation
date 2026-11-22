@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="473.76pt" height="315.36pt" viewBox="0 0 473.76 315.36" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-06T09:59:18.298319</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 315.36 
+L 473.76 315.36 
+L 473.76 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 23.76 58.5 
+L 126 58.5 
+Q 129.6 58.5 129.6 54.9 
+L 129.6 15.66 
+Q 129.6 12.06 126 12.06 
+L 23.76 12.06 
+Q 20.16 12.06 20.16 15.66 
+L 20.16 54.9 
+Q 20.16 58.5 23.76 58.5 
+z
+" clip-path="url(#pf8434b4f66)" style="fill: #ffffff; stroke: #000000; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 185.76 58.5 
+L 288 58.5 
+Q 291.6 58.5 291.6 54.9 
+L 291.6 15.66 
+Q 291.6 12.06 288 12.06 
+L 185.76 12.06 
+Q 182.16 12.06 182.16 15.66 
+L 182.16 54.9 
+Q 182.16 58.5 185.76 58.5 
+z
+" clip-path="url(#pf8434b4f66)" style="fill: #ffffff; stroke: #000000; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 347.76 58.5 
+L 450 58.5 
+Q 453.6 58.5 453.6 54.9 
+L 453.6 15.66 
+Q 453.6 12.06 450 12.06 
+L 347.76 12.06 
+Q 344.16 12.06 344.16 15.66 
+L 344.16 54.9 
+Q 344.16 58.5 347.76 58.5 
+z
+" clip-path="url(#pf8434b4f66)" style="fill: #ffffff; stroke: #000000; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 347.76 137.7 
+L 450 137.7 
+Q 453.6 137.7 453.6 134.1 
+L 453.6 94.86 
+Q 453.6 91.26 450 91.26 
+L 347.76 91.26 
+Q 344.16 91.26 344.16 94.86 
+L 344.16 134.1 
+Q 344.16 137.7 347.76 137.7 
+z
+" clip-path="url(#pf8434b4f66)" style="fill: #ffffff; stroke: #000000; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 185.76 137.7 
+L 288 137.7 
+Q 291.6 137.7 291.6 134.1 
+L 291.6 94.86 
+Q 291.6 91.26 288 91.26 
+L 185.76 91.26 
+Q 182.16 91.26 182.16 94.86 
+L 182.16 134.1 
+Q 182.16 137.7 185.76 137.7 
+z
+" clip-path="url(#pf8434b4f66)" style="fill: #ffffff; stroke: #000000; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 74.88 85.68 
+L 128.88 114.48 
+L 74.88 143.28 
+L 20.88 114.48 
+z
+" clip-path="url(#pf8434b4f66)" style="fill: #ffffff; stroke: #e0201b; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 18.36 216.9 
+L 131.4 216.9 
+Q 135 216.9 135 213.3 
+L 135 174.06 
+Q 135 170.46 131.4 170.46 
+L 18.36 170.46 
+Q 14.76 170.46 14.76 174.06 
+L 14.76 213.3 
+Q 14.76 216.9 18.36 216.9 
+z
+" clip-path="url(#pf8434b4f66)" style="fill: #ffffff; stroke: #000000; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 185.76 216.9 
+L 288 216.9 
+Q 291.6 216.9 291.6 213.3 
+L 291.6 174.06 
+Q 291.6 170.46 288 170.46 
+L 185.76 170.46 
+Q 182.16 170.46 182.16 174.06 
+L 182.16 213.3 
+Q 182.16 216.9 185.76 216.9 
+z
+" clip-path="url(#pf8434b4f66)" style="fill: #ffffff; stroke: #000000; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 347.76 216.9 
+L 450 216.9 
+Q 453.6 216.9 453.6 213.3 
+L 453.6 174.06 
+Q 453.6 170.46 450 170.46 
+L 347.76 170.46 
+Q 344.16 170.46 344.16 174.06 
+L 344.16 213.3 
+Q 344.16 216.9 347.76 216.9 
+z
+" clip-path="url(#pf8434b4f66)" style="fill: #ffffff; stroke: #000000; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 347.76 296.1 
+L 450 296.1 
+Q 453.6 296.1 453.6 292.5 
+L 453.6 253.26 
+Q 453.6 249.66 450 249.66 
+L 347.76 249.66 
+Q 344.16 249.66 344.16 253.26 
+L 344.16 292.5 
+Q 344.16 296.1 347.76 296.1 
+z
+" clip-path="url(#pf8434b4f66)" style="fill: #ffffff; stroke: #000000; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 185.76 296.1 
+L 288 296.1 
+Q 291.6 296.1 291.6 292.5 
+L 291.6 253.26 
+Q 291.6 249.66 288 249.66 
+L 185.76 249.66 
+Q 182.16 249.66 182.16 253.26 
+L 182.16 292.5 
+Q 182.16 296.1 185.76 296.1 
+z
+" clip-path="url(#pf8434b4f66)" style="fill: #ffffff; stroke: #000000; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(62.796797 33.139497)">ORCID</text>
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(64.040742 41.302339)">sign in</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(221.873555 29.058076)">molecule</text>
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(211.037227 37.220918)">InChI, SMILES,</text>
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(210.410859 45.38376)">CAS, PubChem</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(386.792109 33.139497)">sample</text>
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(371.158125 41.302339)">processing route</text>
+   </g>
+   <g id="patch_13">
+    <path d="M 128.88 35.28 
+Q 155.88 35.28 181.810992 35.28 
+" style="fill: none; stroke: #000000; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 179.144325 33.68 
+L 181.810992 35.28 
+L 179.144325 36.88 
+z
+" style="stroke: #000000; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 290.88 35.28 
+Q 317.88 35.28 343.810992 35.28 
+" style="fill: none; stroke: #000000; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 341.144325 33.68 
+L 343.810992 35.28 
+L 341.144325 36.88 
+z
+" style="stroke: #000000; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(380.330977 108.258076)">experiment</text>
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(377.272969 116.420918)">facility, edge,</text>
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(371.78625 124.58376)">mode, geometry</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(217.916133 112.339497)">CSV traces</text>
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(209.366719 120.502339)">column mapping</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(59.459883 112.339497)">structural</text>
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(59.036836 120.502339)">validation</text>
+   </g>
+   <g id="patch_15">
+    <path d="M 398.88 57.78 
+Q 398.88 74.88 398.88 90.910992 
+" style="fill: none; stroke: #000000; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 400.48 88.244325 
+L 398.88 90.910992 
+L 397.28 88.244325 
+z
+" style="stroke: #000000; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 344.88 114.48 
+Q 317.88 114.48 291.949008 114.48 
+" style="fill: none; stroke: #000000; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 294.615675 116.08 
+L 291.949008 114.48 
+L 294.615675 112.88 
+z
+" style="stroke: #000000; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 182.88 114.48 
+Q 155.88 114.48 129.949008 114.48 
+" style="fill: none; stroke: #000000; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 132.615675 116.08 
+L 129.949008 114.48 
+L 132.615675 112.88 
+z
+" style="stroke: #000000; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 90.930009 139.00263 
+Q 152.586207 180.395178 212.63364 138.827033 
+" style="fill: none; stroke: #e0201b; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 209.091871 139.332871 
+L 212.63364 138.827033 
+L 210.91325 141.963951 
+z
+" style="fill: #e0201b; stroke: #e0201b; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 7px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #e0201b" x="227.88" y="152.291523" transform="rotate(-0 227.88 152.291523)">errors returned, nothing stored</text>
+   </g>
+   <g id="patch_19">
+    <path d="M 74.88 143.28 
+Q 74.88 157.23 74.88 170.110992 
+" style="fill: none; stroke: #000000; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 76.48 167.444325 
+L 74.88 170.110992 
+L 73.28 167.444325 
+z
+" style="stroke: #000000; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 7px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: start" x="80.28" y="159.041523" transform="rotate(-0 80.28 159.041523)">pass</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(56.958516 187.458076)">derive OD,</text>
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(46.32668 195.620918)">mass absorption,</text>
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(38.756953 203.78376)">β, δ (Kramers-Kronig)</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(212.916328 187.458076)">quality metrics</text>
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(209.578242 195.620918)">resolution, SNR,</text>
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(214.579219 203.78376)">normalization</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(376.577461 187.458076)">revision 1.0.0</text>
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(377.831367 195.620918)">checksum of</text>
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(371.57707 203.78376)">derived columns</text>
+   </g>
+   <g id="patch_20">
+    <path d="M 134.28 193.68 
+Q 158.58 193.68 181.810992 193.68 
+" style="fill: none; stroke: #000000; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 179.144325 192.08 
+L 181.810992 193.68 
+L 179.144325 195.28 
+z
+" style="stroke: #000000; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 290.88 193.68 
+Q 317.88 193.68 343.810992 193.68 
+" style="fill: none; stroke: #000000; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 341.144325 192.08 
+L 343.810992 193.68 
+L 341.144325 195.28 
+z
+" style="stroke: #000000; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(373.029609 270.739497)">Zenodo deposit</text>
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(374.912812 278.902339)">versioned DOI</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(213.740742 270.739497)">public dataset</text>
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif" transform="translate(224.159883 278.902339)">d/&lt;tag&gt;</text>
+   </g>
+   <g id="patch_22">
+    <path d="M 398.88 216.18 
+Q 398.88 233.28 398.88 249.310992 
+" style="fill: none; stroke: #000000; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 400.48 246.644325 
+L 398.88 249.310992 
+L 397.28 246.644325 
+z
+" style="stroke: #000000; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 344.88 272.88 
+Q 317.88 272.88 291.949008 272.88 
+" style="fill: none; stroke: #000000; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 294.615675 274.48 
+L 291.949008 272.88 
+L 294.615675 271.28 
+z
+" style="stroke: #000000; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 180.880101 272.981513 
+Q 112.342549 276.027396 76.524054 218.829098 
+" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #808080; stroke-linecap: round"/>
+    <path d="M 76.866366 222.390393 
+L 76.524054 218.829098 
+L 79.578478 220.692025 
+z
+" style="fill: #808080; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #808080; stroke-linecap: round"/>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 7px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif; fill: #808080" transform="translate(42.781875 272.682197)">renormalization,</text>
+    <text style="font-size: 7px; font-family: 'Arial', 'Liberation Sans', 'DejaVu Sans', sans-serif; fill: #808080" transform="translate(48.227656 280.30085)">new revision</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pf8434b4f66">
+   <rect x="2.88" y="2.88" width="468" height="309.6"/>
+  </clipPath>
+ </defs>
+</svg>
