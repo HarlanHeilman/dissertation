@@ -21,5 +21,4 @@ Converted on 2026-11-22 from `word/heilman-dissertation-final.docx` using pandoc
 - Figure and table references are now `\ref`. Chapter references ("Chapter 4", 70 of them) are still plain text.
 - "Fig. 4" in Appendix A refers to the numbering of the published manuscript and was left as written.
 - Table headers that used Word equations came through as display math inside minipages and should be simplified.
-- Figure 2.4 (`fig2-04_polymer-nexafs.png`) is a 440 px bitmap recovered from the EMF in the Word file, the only copy found on disk or in earlier drafts.
 - WSU asks that the first page of each manuscript chapter carry the full citation or the statement "Prepared for submission to an academic journal."
