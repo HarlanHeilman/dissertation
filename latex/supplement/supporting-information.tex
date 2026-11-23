@@ -1,4 +1,4 @@
-\section{\texorpdfstring{Film pre-characterization}{Film pre-characterization}}\label{sec:film-pre-characterization}
+\section{Film Pre-characterization}\label{sec:film-pre-characterization}
 
 \begin{figure}[htp]
   \centering
@@ -11,8 +11,7 @@
   \begin{minipage}[t]{0.48\linewidth}
     \centering
     \includegraphics[width=\linewidth,height=0.6\textheight,keepaspectratio]{figS02_giwaxs}
-    % TODO caption contains equations that were flattened to plain text in the Word export; retypeset them.
-    \caption[GIXRD for ZnPc films.]{GIXRD for ZnPc films. (a) GIWAXS image of ZnPc deposited on native-oxide silicon substrate. (b) 1D reduction showing the out-of-plane (200) peak at 0.50 Å-1 (d-spacing 12.6 Å), it’s broadened second order (400) near 1Å-1, the in-plane (002) peak at 0.53 Å-1 (11.8 Å) as well as a mixed index π-π stacking peak at 1.89 Å-1 (3.3 Å). Weak arks near ±45∘ from the substrate normal, makers (20*) in (a), are tentatively assigned to a mixed-index reflection but are too broad azimuthally for a definitive index.}
+    \caption[GIXRD for ZnPc films.]{GIXRD for ZnPc films. (a) GIWAXS image of ZnPc deposited on native-oxide silicon substrate. (b) 1D reduction showing the out-of-plane (200) peak at \qty{0.50}{\per\angstrom} (\(d\)-spacing \qty{12.6}{\angstrom}), its broadened second order (400) near \qty{1}{\per\angstrom}, the in-plane (002) peak at \qty{0.53}{\per\angstrom} (\qty{11.8}{\angstrom}) as well as a mixed index \(\pi\)-\(\pi\) stacking peak at \qty{1.89}{\per\angstrom} (\qty{3.3}{\angstrom}). Weak arcs near \(\pm\)\ang{45} from the substrate normal, markers (20*) in (a), are tentatively assigned to a mixed-index reflection but are too broad azimuthally for a definitive index.}
     \label{fig:S2}
   \end{minipage}
 \end{figure}
@@ -33,8 +32,7 @@
   \begin{minipage}[t]{0.48\linewidth}
     \centering
     \includegraphics[width=\linewidth,height=0.6\textheight,keepaspectratio]{figS04_afm-deposition}
-    % TODO caption contains equations that were flattened to plain text in the Word export; retypeset them.
-    \caption[AFM height map of ZnPc under different deposition conditions.]{AFM height map of ZnPc under different deposition conditions. (a-c) ZnPc deposited on a \qty{3}{nm} CuI patterning layer as a function of deposition rate (left .15 Å/s, right .5 Å/s) and substrate temperature (a) -50 C, room temperature (b) 24 C, and (c) 100 C.}
+    \caption[AFM height map of ZnPc under different deposition conditions.]{AFM height map of ZnPc under different deposition conditions. (a-c) ZnPc deposited on a \qty{3}{nm} CuI patterning layer as a function of deposition rate (left \qty{0.15}{\angstrom\per\s}, right \qty{0.5}{\angstrom\per\s}) and substrate temperature, (a) \qty{-50}{\celsius}, (b) room temperature, \qty{24}{\celsius}, and (c) \qty{100}{\celsius}.}
     \label{fig:S4}
   \end{minipage}
 \end{figure}
@@ -48,8 +46,7 @@ The surface texture for these films shows dense, laterally uniform grains with s
 \begin{figure}
   \centering
   \includegraphics[width=0.45\linewidth,height=0.75\textheight,keepaspectratio]{figS05_model-comparison}
-  % TODO caption contains equations that were flattened to plain text in the Word export; retypeset them.
-  \caption[Comparison of refined clustered optical model with experimental NEXAFS spectroscopy.]{Comparison of refined clustered optical model with experimental NEXAFS spectroscopy. Tilt angle molecular tilt angle is 74∘determined though the refinement of clustered DFT.}
+  \caption[Comparison of refined clustered optical model with experimental NEXAFS spectroscopy.]{Comparison of refined clustered optical model with experimental NEXAFS spectroscopy. The molecular tilt angle is \ang{74}, determined through the refinement of clustered DFT.}
   \label{fig:S5}
 \end{figure}
 
@@ -86,7 +83,7 @@ The coefficients \(A(\theta)\) and \(B(\theta)\) are defined to match the condit
 
 The DFT tensor is instead defined using the directly calculated tensor components for each TDM cluster, resulting in the comparison of Fig.~4.1, requiring no auxiliary analyses.
 
-\section{\texorpdfstring{DFT Methods}{DFT Methods}}\label{sec:dft-methods}
+\section{DFT Methods}\label{sec:dft-methods}
 
 \begin{figure}[htp]
   \centering
@@ -117,7 +114,7 @@ From this structure, four chemically distinct carbon atoms (labeled in Fig.~4.1 
 
 Hyperparameter pairs were evaluated by reduced chi square to experimental NEXAFS and well-behaved parameter pairs where secondarily evaluated by their difference form the original DFT, ensuring the preservation of the DFT calculated information. Here we chose the best fit clustering parameters of \(OS = .25\) and \(OVP = 52.5\). In general, we find good clustering and convergence for all \(OVP \in \lbrack 50,55\rbrack\), with significantly worse performance outside of these bounds. Moreover, we find that \(OS \in \lbrack.1,8\rbrack\) performed similarly, yet parameter agreement with originating DFT degrades rapid for larger \(OS\), while the refinement never converse for \(OS < .1\).
 
-\section{Optical model parameterization}\label{sec:optical-model-parameterization}
+\section{Optical Model Parameterization}\label{sec:optical-model-parameterization}
 
 Molecular order within the film is parameterized by the molecular tilt angle \(\gamma\) of the molecular surface normal from the film surface normal. For uniaxial film, this is the polar cone angle. We begin with the single molecule refined DFT optical model. This construction assumes the single molecule DFT is representative of the electronic states available to a film of the material, ignoring the creation of new multi molecule states, that could be caused by variations to molecular packing or orientation alignment. However, as the clustered DFT model agrees with the experimentally derived optical model, we surmise that these effects are not dominant in this system.
 
@@ -158,13 +155,12 @@ High dynamic range sensitivity was achieved by slicing the measurement q-range i
 
 The final source of error comes in the discrimination between specular and off specular reflectance. Thin film surface scattering and roughness effects smear the reflected beam over a finite width of pixels. This effect becomes more pronounced at higher q-values. To account for this error a q-dependent uncertainty envelope is applied to the propagated uncertainties from data reductions producing a higher uncertainty in the higher q regions of spectra.
 
-\textbf{RSoXS Analysis Methods:} Our fitting methodology has been largely updated from the procedures outlined in Ferron et. al.\autocite{ferron2023composition} The model was constructed containing three layers of ZnPc (Surface, Bulk, Interface), on top of a thin SiO2 native oxide layer, followed by the Si substrate. Each ZnPc layer is modeled using a uniaxial optical tensor whose derivation is described in the methods above. The reflection and transmission coefficients for the stack are computed for each energy and scattering vector via the 4x4 transfer matrix formalism where boundary condition matching at each of the five interfaces sets the reflection and transmission coefficients for each layer, while interfacial roughness manifests as anexponential attenuation to account for the off specular diffuse scattering from a faceted interface. Here we model interfacial roughness in the Nèvot-Croce (NC) sense as is standard for reflectivity analyses.\autocite{nevot1980caracterisation,esashi2021influence} This sets the parameterization of the physical model structure as thickness and roughness for the surface, bulk, and interface layers of ZnPc, along the native SiO2 layer for a combined eight parameters to set the full structure.
+\textbf{RSoXS Analysis Methods:} Our fitting methodology has been largely updated from the procedures outlined in Ferron et. al.\autocite{ferron2023composition} The model was constructed containing three layers of ZnPc (Surface, Bulk, Interface), on top of a thin SiO\textsubscript{2} native oxide layer, followed by the Si substrate. Each ZnPc layer is modeled using a uniaxial optical tensor whose derivation is described in the methods above. The reflection and transmission coefficients for the stack are computed for each energy and scattering vector via the 4x4 transfer matrix formalism where boundary condition matching at each of the five interfaces sets the reflection and transmission coefficients for each layer, while interfacial roughness manifests as anexponential attenuation to account for the off specular diffuse scattering from a faceted interface. Here we model interfacial roughness in the Nèvot-Croce (NC) sense as is standard for reflectivity analyses.\autocite{nevot1980caracterisation,esashi2021influence} This sets the parameterization of the physical model structure as thickness and roughness for the surface, bulk, and interface layers of ZnPc, along the native SiO\textsubscript{2} layer for a combined eight parameters to set the full structure.
 
 \begin{figure}
   \centering
   \includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{figS08_optical-constants}
-  % TODO caption contains equations that were flattened to plain text in the Word export; retypeset them.
-  \caption[Comparison in final best fit optical constants revealed through the Free optical tensor and dft models.]{Comparison in final best fit optical constants revealed through the Free optical tensor and dft models. (a) Imaginary tensor components β, (b) real tensor components δ. The extracted orientation and density are compared in (c) and (d) where the directly refined orientation from the DFT model (traces) is compared with the per energy orientation computed from a secondary refinement to the full tensor. The density is determined by the magnitude of the trace of the optical tensor and showcases a much lower inter energy variance. The orientation that sets dichroism and birefringence varies much strongly between energies and amongst q-ranges.}
+  \caption[Comparison in final best fit optical constants revealed through the Free optical tensor and DFT models.]{Comparison in final best fit optical constants revealed through the Free optical tensor and DFT models. (a) Imaginary tensor components β, (b) real tensor components δ. The extracted orientation and density are compared in (c) and (d) where the directly refined orientation from the DFT model (traces) is compared with the per energy orientation computed from a secondary refinement to the full tensor. The density is determined by the magnitude of the trace of the optical tensor and showcases a much lower inter energy variance. The orientation that sets dichroism and birefringence varies much strongly between energies and amongst q-ranges.}
   \label{fig:S8}
 \end{figure}
 
@@ -181,8 +177,7 @@ For those seeking to follow this analysis, experimental correction parameters ca
 \begin{figure}
   \centering
   \includegraphics[width=0.45\linewidth,height=0.75\textheight,keepaspectratio]{figS09_single-energy-fits}
-  % TODO caption contains equations that were flattened to plain text in the Word export; retypeset them.
-  \caption[Comparison of single energy reflectivity fits at the diagnostic energy (\qty{283.7}{eV}) against the multi energy refinement.]{Comparison of single energy reflectivity fits at the diagnostic energy (\qty{283.7}{eV}) against the multi energy refinement. (a) Direct fit comparison and residuals showcasing that the DFT single energy can out-perform other fit strategies within Brewster’s angle. (b) Energy offset parameter results used in the fits compared between the DFT multi energy (D-M) and single energy (D-S) fits indicating that the single energy fit must take an extreme \qty{-0.1}{eV} offset, to a non-absorbing energy. (c) Interfacial width w=2πσr of the interface layer showcasing that the D-S fit is >10x the total thickness of this buried layer.}
+  \caption[Comparison of single energy reflectivity fits at the diagnostic energy (\qty{283.7}{eV}) against the multi energy refinement.]{Comparison of single energy reflectivity fits at the diagnostic energy (\qty{283.7}{eV}) against the multi energy refinement. (a) Direct fit comparison and residuals showcasing that the DFT single energy can out-perform other fit strategies within Brewster’s angle. (b) Energy offset parameter results used in the fits compared between the DFT multi energy (D-M) and single energy (D-S) fits indicating that the single energy fit must take an extreme \qty{-0.1}{eV} offset, to a non-absorbing energy. (c) Interfacial width \(w = 2\pi\sigma_{r}\) of the interface layer showcasing that the D-S fit is more than \(10\times\) the total thickness of this buried layer.}
   \label{fig:S9}
 \end{figure}
 
@@ -214,7 +209,7 @@ For those seeking to follow this analysis, experimental correction parameters ca
   \end{tabular}
 \end{table}
 
-\section{Orientation gradient theoretical foundation}\label{sec:orientation-gradient-theoretical-foundation-1}
+\section{Orientation Gradient Theoretical Foundation}\label{sec:orientation-gradient-theoretical-foundation-1}
 
 We formulate our gradient model from a Ginzburg-Landau framework of second order phase transitions, where we treat the molecular orientation and density as order parameters (not to be confused with nematic order parameters \(S(\gamma)\) or \(P(\gamma)\)).\autocite{gennes2023physics,ginzburg2009theory} Along the one dimensional depth axis \(z\) of a film of thickness \(L\), we take the order parameters as the deviation in the density \(\Delta\rho(z) = \rho(z) - \rho_{b}\) and orientation \(\Delta\gamma(z) = \gamma(z) - \gamma_{b}(z)\) from the bulk. The total free energy of the film is described by the functional
 
@@ -265,15 +260,13 @@ While this model is congruent with the continuous reorientation under an evolvin
   \begin{minipage}[t]{0.48\linewidth}
     \centering
     \includegraphics[width=\linewidth,height=0.6\textheight,keepaspectratio]{figS10_nonresonant-xrr}
-    % TODO caption contains equations that were flattened to plain text in the Word export; retypeset them.
-    \caption[Non-resonant and non-polarized XRR measured on a similarly prepared sample with thickness \qty{15}{nm} measured by QCM and grown under otherwise identical conditions.]{Non-resonant and non-polarized XRR measured on a similarly prepared sample with thickness \qty{15}{nm} measured by QCM and grown under otherwise identical conditions. Data was measured at Washington State University on a Xenocs Xeuss 3.0 with a focused Cu X-ray source. Reflectivity was fit using the starting parameters of the gradient model Table~4.1 while fitting only total film thickness. Once converged all other parameters where refined, ρv , ρb, ρSi, τv, τSi, to less than 1σ from their initial position. A single non resonant energy is incapable of independently determining the orientation gradient, yet the density gradient is consistent with this second sample.}
+    \caption[Non-resonant and non-polarized XRR measured on a similarly prepared sample with thickness \qty{15}{nm} measured by QCM and grown under otherwise identical conditions.]{Non-resonant and non-polarized XRR measured on a similarly prepared sample with thickness \qty{15}{nm} measured by QCM and grown under otherwise identical conditions. Data was measured at Washington State University on a Xenocs Xeuss 3.0 with a focused Cu X-ray source. Reflectivity was fit using the starting parameters of the gradient model Table~4.1 while fitting only total film thickness. Once converged all other parameters where refined, \(\rho_{v}\), \(\rho_{b}\), \(\rho_{\mathrm{Si}}\), \(\tau_{v}\), \(\tau_{\mathrm{Si}}\), to less than \(1\sigma\) from their initial position. A single non resonant energy is incapable of independently determining the orientation gradient, yet the density gradient is consistent with this second sample.}
     \label{fig:S10}
   \end{minipage}\hfill
   \begin{minipage}[t]{0.48\linewidth}
     \centering
     \includegraphics[width=\linewidth,height=0.6\textheight,keepaspectratio]{word-export/figS11}
-    % TODO caption contains equations that were flattened to plain text in the Word export; retypeset them.
-    \caption[Reconstructed packing (Fig.~4.4c) compared with GIWAXS.]{Reconstructed packing (Fig.~4.4c) compared with GIWAXS. (a) Out-f-plane (red) and in-plane (blue) sector cuts from \cref{fig:S2} with lamellar orders and the π-stacking reflection indexed. Dashed lines mark the d-spacing predicted by the packing in Fig. 4c. (b) Comparison between predicted d-spacing and the measured d-spacing for both periods.}
+    \caption[Reconstructed packing (Fig.~4.4c) compared with GIWAXS.]{Reconstructed packing (Fig.~4.4c) compared with GIWAXS. (a) Out-of-plane (red) and in-plane (blue) sector cuts from \cref{fig:S2} with lamellar orders and the π-stacking reflection indexed. Dashed lines mark the d-spacing predicted by the packing in Fig.~4.4c. (b) Comparison between predicted d-spacing and the measured d-spacing for both periods.}
     \label{fig:S11}
   \end{minipage}
 \end{figure}
@@ -295,7 +288,6 @@ While this model is congruent with the continuous reorientation under an evolvin
 \begin{figure}
   \centering
   \includegraphics[width=0.55\linewidth,height=0.75\textheight,keepaspectratio]{figS12_unit-cells}
-  % TODO caption contains equations that were flattened to plain text in the Word export; retypeset them.
   \caption[Constructed unit cells for MD simulations.]{Constructed unit cells for MD simulations. (a) β phase ZnPc from the crystallography used for DFT simulation. (c) α phase ZnPc constructed from CuPc α cell, with spacings constrained from GIXRD. (d) Thermally relaxed α-ZnPc cell through LAMMPS simulation. The α-ZnPc cell is constructed on a repulsive wall and annealed at \qty{300}{K}.}
   \label{fig:S12}
 \end{figure}
@@ -303,7 +295,6 @@ While this model is congruent with the continuous reorientation under an evolvin
 \begin{figure}
   \centering
   \includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{figS13_fisher-sensitivity}
-  % TODO caption contains equations that were flattened to plain text in the Word export; retypeset them.
-  \caption[Fisher sensitivity analysis for reflectivity of 2nd order orientation and density phase transitions for ZnPc.]{Fisher sensitivity analysis for reflectivity of 2nd order orientation and density phase transitions for ZnPc. From the best fit model (Fig.~4.4a), each pinned boundary is systematically varied along a feasible grid with characteristic thicknesses held constant. (a-d) p-polarized and (f-i) s-polarized simulated reflectivity (Rq4). The upper axis of each reflectivity panel originates from the \qty{283.7}{eV} diagnostic energy over the full measurement range, with the lower being the resonant series on the reduced q-range vertically offset for clarity. The reflectivity slope and fringe depth, that usually set by surface or interfacial roughness, are polarization and energy dependent. Moreover, the primary channel for sensitivity to the buried interface is the p-polarized reflectivity, especially for q values near Brewster’s angle causing \qty{283.7}{eV} to dominantly dictate the buried microstructure. The Kiessig fringe phase is also set differently across energy and polarization by a combination by all four pinned interfaces with no single parameter fully setting the phase. (e \& j) Detectability, ΔθσCR, for each dataset split by energy, parameter and polarization, where Δθ is the difference in each parameter from the bulk phase, and σCR is the Cramér-Rao bound. The fisher information is evaluated at the measured q-points over every parameter of the joint fit along with the four boundary values, with the other parameters held constant. The measurement error is modified with a fractional error floor setting the χν2→1 such that the best fit solution in the main text is treated as the ground truth. Bars raise from one standard error ΔθσCR=1. The pinned silica state rises 37 and 9 standard errors from the bulk using a residual based sandwich covariance (σγSi=1.28∘, σρSi=0.084g/cm3).}
+  \caption[Fisher sensitivity analysis for reflectivity of 2nd order orientation and density phase transitions for ZnPc.]{Fisher sensitivity analysis for reflectivity of 2nd order orientation and density phase transitions for ZnPc. From the best fit model (Fig.~4.4a), each pinned boundary is systematically varied along a feasible grid with characteristic thicknesses held constant. (a-d) p-polarized and (f-i) s-polarized simulated reflectivity (\(Rq^{4}\)). The upper axis of each reflectivity panel originates from the \qty{283.7}{eV} diagnostic energy over the full measurement range, with the lower being the resonant series on the reduced q-range vertically offset for clarity. The reflectivity slope and fringe depth, that usually set by surface or interfacial roughness, are polarization and energy dependent. Moreover, the primary channel for sensitivity to the buried interface is the p-polarized reflectivity, especially for q values near Brewster’s angle causing \qty{283.7}{eV} to dominantly dictate the buried microstructure. The Kiessig fringe phase is also set differently across energy and polarization by a combination by all four pinned interfaces with no single parameter fully setting the phase. (e \& j) Detectability, \(\Delta\theta/\sigma_{\mathrm{CR}}\), for each dataset split by energy, parameter and polarization, where \(\Delta\theta\) is the difference in each parameter from the bulk phase, and \(\sigma_{\mathrm{CR}}\) is the Cramér-Rao bound. The Fisher information is evaluated at the measured q-points over every parameter of the joint fit along with the four boundary values, with the other parameters held constant. The measurement error is modified with a fractional error floor setting \(\chi^{2}_{\nu} \to 1\) such that the best fit solution in the main text is treated as the ground truth. Bars rise from one standard error, \(\Delta\theta/\sigma_{\mathrm{CR}} = 1\). The pinned silica state rises 37 and 9 standard errors from the bulk using a residual based sandwich covariance (\(\sigma_{\gamma,\mathrm{Si}} = \ang{1.28}\), \(\sigma_{\rho,\mathrm{Si}} = \qty{0.084}{g.cm^{-3}}\)).}
   \label{fig:S13}
 \end{figure}
