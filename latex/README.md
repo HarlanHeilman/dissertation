@@ -38,5 +38,4 @@ Converted on 2026-11-22 from `word/heilman-dissertation-final.docx` using pandoc
 - 19 captions (Chapters 3, 4 and 5 and the supplement) contained equations that Word stored as plain text. Each is marked `% TODO caption contains equations`.
 - The 65 display equations are unnumbered `\[ \]` blocks. Equation numbers from Word were not carried over.
 - Chapter references ("Chapter 4") are plain text. Section numbers cited from Chapter 4 into the supplement ("Supplemental Material, Sec. 3.1") follow the published SI and do not match the supplement's S1 to S5 sections.
-- Table headers that used Word equations came through as display math inside minipages and should be simplified.
 - WSU asks for the full citation (published) or the statement "Prepared for submission to an academic journal." on the first page of each manuscript chapter. Chapters 5 and 6 carry the statement. Chapter 4 still reads "In review at an academic journal" and needs its citation.
