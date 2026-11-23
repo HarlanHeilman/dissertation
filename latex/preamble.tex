@@ -106,6 +106,16 @@
 \renewcommand{\contentsname}{Table of Contents}
 
 % Commands emitted by the pandoc conversion of the Word draft.
+% Code. Listings are set in FiraCode at \footnotesize (about 94 characters to the line), in black (WSU requires black text outside figures and
+% tables), with a rule on the left and long lines wrapped at spaces with a small hook at the break.
+% \begin{codeblock} ... \end{codeblock} for a listing; \code{...} for a command or name inside a sentence.
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{codeblock}{Verbatim}{fontsize=\footnotesize,frame=leftline,framesep=8pt,xleftmargin=8pt,
+  breaklines,breakindent=2em,breaksymbolleft={\tiny\ensuremath{\hookrightarrow}},breaksymbolsepleft=0.4em,
+  samepage=false}
+\newcommand{\code}[1]{\texttt{#1}}
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\small}
+
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 % Document metadata used by the front matter.

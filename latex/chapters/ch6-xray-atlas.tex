@@ -188,227 +188,157 @@ Citation follows two conventions depending on scope. An individual dataset is ci
 
 The programmatic layer described above rests on the architecture in Fig.~\ref{fig:6.8}a. A single store of records and files sits behind two interfaces. The web application serves people through the browser, and the REST interface /api/v1 serves programs, shared by the xrayatlas Python package and the xatlas command-line client so that a script and a terminal session see the same records under the same permissions. Identity and persistence are delegated to external services, ORCID for sign-in and attribution and Zenodo for versioned DOIs, so neither depends on the availability of X-ray Atlas itself. The client never fits peaks, computes optical constants, or normalizes spectra. Normalization is computed by the server, so every client receives the same derived channels. Optical models extend the same versioning from data to analysis (Fig.~\ref{fig:6.8}b). A model, a set of peak assignments with \(\delta\) and \(\beta\) for each tensor component on a shared energy axis, fit by its authors to one or more datasets in the manner of Chapter 5 and of the bond-traceable tensors of Murcia et al.\autocite{murcia2026quantitative} , pins the exact dataset revisions it was built from. The default model for a dataset can be forked, with each fork versioned and authored independently while keeping a link to its parent. A citation of any model lists the model, the dataset revisions it pins, and every ancestor in its chain, so credit reaches each contributor to the measurement, the processing, and the analysis. Likewise, a result built on a model can be traced back to the raw spectra behind it. The xrayatlas package is released on PyPI and remains under active development.
 
-The package requires Python 3.10 or newer and installs with pip install xrayatlas or uv add xrayatlas. Authentication is shared with the command-line client, so a single xatlas login writes the credential that both read. The listing below pulls the ZnPc dataset of Chapter 4, publishes an optical model built on it, forks and compares that model, and pins the session to the exact revisions it used. The xatlas client exposes the same operations from the terminal. xatlas search, xatlas molecules, and xatlas datasets find and fetch records, xatlas upload contributes a dataset through the validation of Fig.~\ref{fig:6.4}, xatlas models reads, pushes, and publishes optical models, and xatlas lock and xatlas restore write and replay the same lockfile as the Python client, so an analysis recorded in one can be reproduced in the other.
+The package requires Python 3.10 or newer and installs with \code{pip install xrayatlas} or \code{uv add xrayatlas}. Authentication is shared with the command-line client, so a single \code{xatlas login} writes the credential that both read. The listing below pulls the ZnPc dataset of Chapter 4, publishes an optical model built on it, forks and compares that model, and pins the session to the exact revisions it used. The xatlas client exposes the same operations from the terminal. \code{xatlas search}, \code{xatlas molecules}, and \code{xatlas datasets} find and fetch records, \code{xatlas upload} contributes a dataset through the validation of Fig.~\ref{fig:6.4}, \code{xatlas models} reads, pushes, and publishes optical models, and \code{xatlas lock} and \code{xatlas restore} write and replay the same lockfile as the Python client, so an analysis recorded in one can be reproduced in the other.
 
 \textbf{Query the database}. Using the CLI it is possible to directly query the database, applying filters and identifying the datasets that are useful or interesting. Once found these datasets can be stored locally in tabular forms such as CSV files, parquet files, or as local SQLite snapshots.
 
-bash
-
-\emph{\# Browse the catalog by molecule, edge, and facility}
-
+\begin{codeblock}
+# Browse the catalog by molecule, edge, and facility
 xatlas molecules tree phthalocyanine
+xatlas molecules tree --group edge,molecule,facility
 
-xatlas molecules tree -\/-group edge,molecule,facility
+# Read-only SQL on the public spectrum_points relation
+xatlas query "SELECT atlas_dataset_id, molecule_id, facility_name, COUNT(*) AS n_points
+              FROM spectrum_points
+              WHERE edge_label = 'C(K)' AND facility_name ILIKE '%light source%'
+              GROUP BY atlas_dataset_id, molecule_id, facility_name
+              ORDER BY n_points DESC"
 
-\emph{\# Read-only SQL on the public spectrum\_points relation}
-
-xatlas query "SELECT atlas\_dataset\_id, molecule\_id, facility\_name, COUNT(*) AS n\_points
-
-FROM spectrum\_points
-
-WHERE edge\_label = \textquotesingle C(K)\textquotesingle{} AND facility\_name ILIKE \textquotesingle\%light source\%\textquotesingle{}
-
-GROUP BY atlas\_dataset\_id, molecule\_id, facility\_name
-
-ORDER BY n\_points DESC"
-
-\emph{\# The same SQL on a local SQLite snapshot}
-
-xatlas datasets fetch d/193bc0c5 -\/-out ./data -\/-format sqlite
-
-xatlas query -\/-db ./data/spectra.sqlite \textbackslash{}
-
-"SELECT DISTINCT theta\_deg, phi\_deg FROM spectrum\_points ORDER BY theta\_deg"
+# The same SQL on a local SQLite snapshot
+xatlas datasets fetch d/193bc0c5 --out ./data --format sqlite
+xatlas query --db ./data/spectra.sqlite \
+    "SELECT DISTINCT theta_deg, phi_deg FROM spectrum_points ORDER BY theta_deg"
+\end{codeblock}
 
 The same queries are available in Python, where lightweight dataset summaries can be searched by molecule, edge, DOI, or Atlas identifier without downloading any spectra, and a local snapshot can be queried directly with standard tools such as pandas.
 
-python
-
+\begin{codeblock}
 import sqlite3
 
 import pandas as pd
-
 import xrayatlas as xa
 
-\emph{\# Lightweight summaries filtered by molecule, edge, DOI, or Atlas id; no spectra are downloaded}
+# Lightweight summaries filtered by molecule, edge, DOI, or Atlas id; no spectra are downloaded
+for summary in xa.datasets.search(molecule_id=molecule_id):   # UUID from the SQL above
+    print(summary.atlas_dataset_id, summary.edge_label,
+          summary.spectrum_point_count, summary.dataset_doi)
 
-for summary in xa.datasets.search(molecule\_id=molecule\_id): \emph{\# UUID from the SQL above}
-
-print(summary.atlas\_dataset\_id, summary.edge\_label,
-
-summary.spectrum\_point\_count, summary.dataset\_doi)
-
-\emph{\# Query the local snapshot directly with pandas}
-
+# Query the local snapshot directly with pandas
 with sqlite3.connect("data/spectra.sqlite") as con:
-
-iso = pd.read\_sql(
-
-"SELECT energy\_ev, mass\_absorption, beta FROM spectrum\_points "
-
-"WHERE abs(theta\_deg - 54.7) \textless{} 0.1 ORDER BY energy\_ev",
-
-con,
-
-)
+    iso = pd.read_sql(
+        "SELECT energy_ev, mass_absorption, beta FROM spectrum_points "
+        "WHERE abs(theta_deg - 54.7) < 0.1 ORDER BY energy_ev",
+        con,
+    )
+\end{codeblock}
 
 \textbf{Accessing datasets}. Once a dataset is identified it can be pulled into a coding environment such as Python using the xrayatlas package. From there metadata information such as versions, molecule information, publication information and more can be accessed, along with the spectral data including both the raw uploaded data and the derived quantities such as optical constants.
 
-python
-
+\begin{codeblock}
 import xrayatlas as xa
 
-ds = xa.datasets.get("d/193bc0c5") \emph{\# current version, cached by version}
+ds = xa.datasets.get("d/193bc0c5")               # current version, cached by version
+pinned = xa.datasets.get("d/193bc0c5", "1.0.0")  # pinned version
 
-pinned = xa.datasets.get("d/193bc0c5", "1.0.0") \emph{\# pinned version}
+print(ds.molecule_name, ds.edge, ds.facility, ds.instrument, ds.version)
+print(ds.publication_dois)
 
-print(ds.molecule\_name, ds.edge, ds.facility, ds.instrument, ds.version)
+spec = ds.spectra()           # energy_ev, theta_deg, phi_deg, raw_abs, i0,
+                              # od, mass_absorption, beta, delta
+raw = ds.spectra(raw=True)    # uploaded signal and I0 only
+geometries = ds.geometries()  # ordered (theta_deg, phi_deg) pairs; (90, 45) != (45, 90)
 
-print(ds.publication\_dois)
+# One trace per geometry, and the isotropic (magic-angle) spectrum
+traces = {geom: trace for geom, trace in spec.groupby(["theta_deg", "phi_deg"])}
+iso = spec[(spec.theta_deg - 54.7).abs() < 0.1]
 
-spec = ds.spectra() \emph{\# energy\_ev, theta\_deg, phi\_deg, raw\_abs, i0,}
-
-\emph{\# od, mass\_absorption, beta, delta}
-
-raw = ds.spectra(raw=True) \emph{\# uploaded signal and I0 only}
-
-geometries = ds.geometries() \emph{\# ordered (theta\_deg, phi\_deg) pairs; (90, 45) != (45, 90)}
-
-\emph{\# One trace per geometry, and the isotropic (magic-angle) spectrum}
-
-traces = \{geom: trace for geom, trace in spec.groupby({[}"theta\_deg", "phi\_deg"{]})\}
-
-iso = spec{[}(spec.theta\_deg - 54.7).abs() \textless{} 0.1{]}
-
-ds.aux\_files.download("aux/", kind="sample") \emph{\# sample-aux/ files from the dataset bundle}
-
-models = ds.models(scope="public") \emph{\# optical models that link this dataset}
-
+ds.aux_files.download("aux/", kind="sample")     # sample-aux/ files from the dataset bundle
+models = ds.models(scope="public")               # optical models that link this dataset
 with open("znpc.bib", "w") as f:
-
-f.write(ds.bibtex())
+    f.write(ds.bibtex())
+\end{codeblock}
 
 \textbf{Working with datasets}. The package makes available tools to directly interact with a dataset, including modifying normalization schemes and peak assignments, before pushing to the remote database. Normalization windows can be set once for every channel or separately for the optical density, the mass absorption, and β, and peak assignments from an independent fit are validated row by row before upload. A change to the normalization of a dataset creates a new revision and a new Zenodo version, so earlier analyses that pinned the previous version remain reproducible.
 
-python
-
+\begin{codeblock}
 import pandas as pd
-
 import xrayatlas as xa
 
-\emph{\# One pre-edge and post-edge window pair for every channel}
-
+# One pre-edge and post-edge window pair for every channel
 norm = xa.Normalization(pre=(270.0, 282.0), post=(320.0, 330.0))
 
-\emph{\# Or a separate pair for each channel}
-
-norm\_pc = xa.Normalization(
-
-scope="per\_channel",
-
-od=xa.WindowPair(pre=(270.0, 282.0), post=(320.0, 330.0)),
-
-massabsorption=xa.WindowPair(pre=(270.0, 282.0), post=(320.0, 330.0)),
-
-beta=xa.WindowPair(pre=(270.0, 282.0), post=(320.0, 330.0)),
-
+# Or a separate pair for each channel
+norm_pc = xa.Normalization(
+    scope="per_channel",
+    od=xa.WindowPair(pre=(270.0, 282.0), post=(320.0, 330.0)),
+    massabsorption=xa.WindowPair(pre=(270.0, 282.0), post=(320.0, 330.0)),
+    beta=xa.WindowPair(pre=(270.0, 282.0), post=(320.0, 330.0)),
 )
 
-\emph{\# Peak assignments from your own fit; unrecognized columns are stored as each peak\textquotesingle s params}
+# Peak assignments from your own fit; unrecognized columns are stored as each peak's params
+peaks = pd.DataFrame({
+    "center_ev":  [284.2, 285.1, 287.1, 288.9],
+    "kind":       ["pi-star", "pi-star", "other", "other"],
+    "transition": ["C2 1s -> MO 117", "C3 1s -> MO 119",
+                   "C2 1s -> MO 124", "C1 1s -> MO 124"],
+    "amplitude":  amplitudes,          # arrays of length 4 from the fit
+    "width":      widths,
+    "fit_tool":   "refloxide",
+})
+checked = xa.validate_peaks(peaks)  # ValidationError names the offending row and column
+\end{codeblock}
 
-peaks = pd.DataFrame(\{
-
-"center\_ev": {[}284.2, 285.1, 287.1, 288.9{]},
-
-"kind": {[}"pi-star", "pi-star", "other", "other"{]},
-
-"transition": {[}"C2 1s -\textgreater{} MO 117", "C3 1s -\textgreater{} MO 119",
-
-"C2 1s -\textgreater{} MO 124", "C1 1s -\textgreater{} MO 124"{]},
-
-"amplitude": amplitudes, \emph{\# arrays of length 4 from the fit}
-
-"width": widths,
-
-"fit\_tool": "refloxide",
-
-\})
-
-checked = xa.validate\_peaks(peaks) \emph{\# ValidationError names the offending row and column}
-
-bash
-
-\emph{\# Change the dataset\textquotesingle s own normalization (a new revision and a new Zenodo version)}
-
-xatlas datasets push d/193bc0c5 -\/-normalization norm.json -\/-dry-run
-
+\begin{codeblock}
+# Change the dataset's own normalization (a new revision and a new Zenodo version)
+xatlas datasets push d/193bc0c5 --normalization norm.json --dry-run
 xatlas datasets status d/193bc0c5
+\end{codeblock}
 
-Uploading datasets and optical models. The Python package and the command-line client both provide handles for uploading new datasets and new optical models into the database. An upload requires a credential with write scope and can first be run as a dry run, which applies the same structural validation as a real upload without writing anything. The file name of a contributed spectrum encodes its edge, detection mode, and beamline, so that these fields are set consistently at ingestion.
+\textbf{Uploading datasets and optical models}. The Python package and the command-line client both provide handles for uploading new datasets and new optical models into the database. An upload requires a credential with write scope and can first be run as a dry run, which applies the same structural validation as a real upload without writing anything. The file name of a contributed spectrum encodes its edge, detection mode, and beamline, so that these fields are set consistently at ingestion.
 
-bash
+\begin{codeblock}
+# A credential with write scope, then a dry run of the upload
+xatlas auth login --write --name "lab laptop"
+xatlas upload C-K_TEY_ALS_5.3.2_lab_vendor.csv --molecule "zinc phthalocyanine" \
+    --process-method dry --dry-run       # six-token name sets edge, mode, and beamline
 
-\emph{\# A credential with write scope, then a dry run of the upload}
-
-xatlas auth login -\/-write -\/-name "lab laptop"
-
-xatlas upload C-K\_TEY\_ALS\_5.3.2\_lab\_vendor.csv -\/-molecule "zinc phthalocyanine" \textbackslash{}
-
--\/-process-method dry -\/-dry-run \emph{\# six-token name sets edge, mode, and beamline}
-
-\emph{\# Pull a published model to disk}
-
-xatlas models pull k7m2xq4n -\/-out ./znpc-model
+# Pull a published model to disk
+xatlas models pull k7m2xq4n --out ./znpc-model
+\end{codeblock}
 
 With a dataset uploaded, new optical models can be defined by modifying the normalization scheme and the method by which the optical tensor is derived. Building a model forks the default model of the dataset, attaches a normalization, peak assignments, and a tensor in the molecular or film frame, and publishes an immutable version with its own citation. A published model can itself be forked and refined, for instance with peak parameters refined against reflectivity, and the lineage of every version travels with its citation together with the dataset revisions it pins. A lock file records every dataset and model revision used in an analysis so that the session can be replayed later.
 
-python
-
+\begin{codeblock}
 import numpy as np
-
 import xrayatlas as xa
 
 ds = xa.datasets.get("d/193bc0c5")
 
-\emph{\# Complex payload with delta in the real part and beta in the imaginary part, (n\_energy, 2)}
+# Complex payload with delta in the real part and beta in the imaginary part, (n_energy, 2)
+values = np.stack([delta_xx + 1j * beta_xx, delta_zz + 1j * beta_zz], axis=1)
 
-values = np.stack({[}delta\_xx + 1j * beta\_xx, delta\_zz + 1j * beta\_zz{]}, axis=1)
+with xa.model(datasets=[ds], title="ZnPc ML-DFT tensor") as builder:  # forks the default model
+    builder.normalization = norm
+    builder.peaks = peaks
+    builder.tensor = xa.Tensor.from_array(values, energy_ev=energy, components=["xx", "zz"],
+                                          frame="molecular", units="1")
+model = builder.publish()             # explicit and never retried; versions are immutable
 
-with xa.model(datasets={[}ds{]}, title="ZnPc ML-DFT tensor") as builder: \emph{\# forks the default model}
+model.set_visibility("public")        # private, shared, or public
+channels = model.normalized(ds)       # server-computed od, mass_absorption, beta
+print(model.cite())                   # BibTeX of this published version
 
-builder.normalization = norm
-
-builder.peaks = peaks
-
-builder.tensor = xa.Tensor.from\_array(values, energy\_ev=energy, components={[}"xx", "zz"{]},
-
-frame="molecular", units="1")
-
-model = builder.publish() \emph{\# explicit and never retried; versions are immutable}
-
-model.set\_visibility("public") \emph{\# private, shared, or public}
-
-channels = model.normalized(ds) \emph{\# server-computed od, mass\_absorption, beta}
-
-print(model.cite()) \emph{\# BibTeX of this published version}
-
-\emph{\# Fork, publish the next version, and compare the two}
-
+# Fork, publish the next version, and compare the two
 with model.fork(title="ZnPc ML-DFT tensor, reflectivity refined") as fork:
-
-fork.peaks = refined\_peaks
-
+    fork.peaks = refined_peaks
 refined = fork.publish()
+aligned = xa.compare([model, refined], tolerance_ev=0.2).peaks
+lineage = refined.lineage()           # visible ancestors, newest first
 
-aligned = xa.compare({[}model, refined{]}, tolerance\_ev=0.2).peaks
-
-lineage = refined.lineage() \emph{\# visible ancestors, newest first}
-
-\emph{\# Pin every dataset and model revision used in this session, and replay it later}
-
+# Pin every dataset and model revision used in this session, and replay it later
 xa.lock("analysis.lock")
-
 xa.restore("analysis.lock")
+\end{codeblock}
 
 \section{Code Availability}\label{sec:code-availability}
 
