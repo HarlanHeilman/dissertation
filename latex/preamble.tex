@@ -5,7 +5,11 @@
 % measure of 45 to 90 characters).
 % Running heads sit in the top margin, their baseline 0.7 in from the top edge (WSU exempts running heads
 % from the 1 in margin and asks only that nothing come within 0.5 in of the edge).
-\usepackage[letterpaper,vmargin=1in,hmargin=1.4in,footskip=0.5in,headheight=14pt,headsep=0.3in]{geometry}
+% Page numbers: the Graduate School review asks for at least 0.5 in of blank space between the bottom of the text
+% and the top of the page number, with the number centered 0.5 in from the bottom edge. A footskip of 0.7 in
+% (baseline to baseline) leaves more than 0.5 in of clear space above the digits, and a bottom margin of 1.2 in puts the
+% number's baseline 0.5 in from the edge, outside the 0.5 in absolute margin.
+\usepackage[letterpaper,top=1in,bottom=1.2in,hmargin=1.4in,footskip=0.7in,headheight=14pt,headsep=0.3in]{geometry}
 \usepackage{amsmath,amssymb}
 \usepackage{fontspec}
 \usepackage[mathbf=sym]{unicode-math}
@@ -40,6 +44,9 @@
 \usepackage{xcolor}
 \usepackage{enumitem}
 \usepackage{url}
+% URLs (in the bibliography and the data and code availability notes) in the text font, so the whole
+% dissertation outside code listings is set in one font, as the Graduate School review asks.
+\urlstyle{same}
 % Bibliography in the biblatex-phys style (AIP and APS conventions), with its own defaults for names, dates and
 % titles. Back-references are added: each entry lists the pages that cite it.
 \usepackage[

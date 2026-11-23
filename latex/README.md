@@ -18,7 +18,7 @@ Two documents are built from the repository root, each with LuaLaTeX and biber (
 
 ## Formatting choices
 
-- Margins 1 in top and bottom and 1.4 in at the sides (a 5.7 in measure, about 80 characters to the line; WSU asks for 45 to 90), 11 pt type, line stretch 1.15 (142 % of the point size; WSU asks 120 to 145 % for LaTeX), page numbers centered 0.5 in from the bottom edge, roman numerals through the dedication.
+- Margins 1 in at the top, 1.2 in at the bottom (so the page number, 0.5 in from the edge, has 0.5 in of clear space above it) and 1.4 in at the sides (a 5.7 in measure, about 80 characters to the line; WSU asks for 45 to 90), 11 pt type, line stretch 1.15 (142 % of the point size; WSU asks 120 to 145 % for LaTeX), page numbers centered 0.5 in from the bottom edge, roman numerals through the dedication.
 - Text in New Computer Modern Book with New Computer Modern Math Book. `notes/font-demo/font-demo.pdf` and `cm-compare.pdf` compare the alternatives; the swap is two lines in `preamble.tex`.
 - Chapters open with a spaced small-capital "Chapter", a large numeral, the title in spaced small capitals and a short rule. Sections are in spaced small capitals, subsections in bold, subsubsections in italic. Captions are single-spaced with the label in spaced small capitals.
 - Floats go to page tops or float pages and never rise above the heading of their own section (placeins). A figure that opens its section sits in the source right after the heading with `[htp]`, so it lands under the heading when it fits there.
