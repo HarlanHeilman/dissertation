@@ -41,5 +41,9 @@ Converted on 2026-11-22 from `word/heilman-dissertation-final.docx` using pandoc
 ## Known cleanup
 
 - Chapter 4 cited subsections of the published SI ("Sec. 3.1", "Sec. 5.4"); the supplement has only sections S1 to S5, so those references now point to the section ("Sec. S3", "Sec. S5").
-- Chapter 4 cites "Fig. S13a" for the beta-ZnPc unit cell; the unit cells are in Fig. S12 and S13 is the Fisher analysis, so that reference likely should read S12a.
-- Manuscript chapters (4, 5 and 6) open with WSU's statement "Prepared for submission to an academic journal.", the author list and an Attributions section. Chapter 4 also cites its arXiv preprint (arXiv:2610.31924). Once a chapter is published, replace the statement with the full citation and file the publisher's permission with ProQuest if the copyright was transferred.
+- Manuscript chapters (4, 5 and 6) open with WSU's statement "Prepared for submission to an academic journal.", the author list and an Attributions section. Chapter 4 is under peer review and also cites its arXiv preprint (arXiv:2610.31924); Chapters 5 and 6 are in preparation and not yet posted or submitted. Once a chapter is published, replace the statement with the full citation and file the publisher's permission with ProQuest if the copyright was transferred.
+
+## Submission
+
+- Enroll the ETD in a ProQuest embargo of at least one year when uploading, since Chapters 5 and 6 are unpublished manuscripts and Chapter 4 is under peer review.
+- An acknowledgment of AI assistance (WSU guidelines, "Use of AI/LLMs") is still to be placed.
