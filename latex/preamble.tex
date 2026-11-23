@@ -74,8 +74,10 @@
   {\Large\spacedsc}
   [\vspace{10pt}\rule{0.25\textwidth}{0.4pt}]
 \titlespacing*{\chapter}{0pt}{0pt}{28pt}
-% Unnumbered chapter-level headings (Acknowledgments, Dedication, References, lists): centered capitals at body size.
-\titleformat{name=\chapter,numberless}[block]{\normalfont\normalsize\centering}{}{0pt}{\MakeUppercase}
+% Unnumbered chapter-level headings (Acknowledgments, Dedication, the lists): centered, body size, written as given,
+% following prior accepted WSU dissertations from the group ("Table of Contents", "List of Figures"); REFERENCES is
+% set in capitals where it is printed.
+\titleformat{name=\chapter,numberless}[block]{\normalfont\normalsize\centering}{}{0pt}{}
 \titlespacing*{name=\chapter,numberless}{0pt}{0pt}{12pt}
 % Section levels: spaced small capitals, then bold, then italic.
 \titleformat{\section}{\normalfont\large}{\thesection}{0.9em}{\spacedsc}
@@ -104,9 +106,9 @@
 \renewcommand{\sectionmark}[1]{}
 
 \usepackage{tocloft}
-\renewcommand{\contentsname}{TABLE OF CONTENTS}
-\renewcommand{\listfigurename}{LIST OF FIGURES}
-\renewcommand{\listtablename}{LIST OF TABLES}
+\renewcommand{\contentsname}{Table of Contents}
+\renewcommand{\listfigurename}{List of Figures}
+\renewcommand{\listtablename}{List of Tables}
 \renewcommand{\cfttoctitlefont}{\hfill\normalfont\normalsize}
 \renewcommand{\cftlottitlefont}{\hfill\normalfont\normalsize}
 \renewcommand{\cftloftitlefont}{\hfill\normalfont\normalsize}
