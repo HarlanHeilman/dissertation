@@ -1,10 +1,11 @@
 % Preamble, loaded by ../main.tex. Compile with LuaLaTeX and biber (latexmk does both, see ../latexmkrc).
 % All paths are relative to the repository root.
 % WSU: at least 1 in margins, page numbers centered 0.5 in from the bottom edge.
-% Side margins of 1.25 in give a 6 in measure, about 85 characters per line (WSU suggests 45 to 90).
+% Side margins of 1.4 in give a 5.7 in measure, about 80 characters per line (WSU: at least 1 in margins, and a
+% measure of 45 to 90 characters).
 % Running heads sit in the top margin, their baseline 0.7 in from the top edge (WSU exempts running heads
 % from the 1 in margin and asks only that nothing come within 0.5 in of the edge).
-\usepackage[letterpaper,vmargin=1in,hmargin=1.25in,footskip=0.5in,headheight=14pt,headsep=0.3in]{geometry}
+\usepackage[letterpaper,vmargin=1in,hmargin=1.4in,footskip=0.5in,headheight=14pt,headsep=0.3in]{geometry}
 \usepackage{amsmath,amssymb}
 \usepackage{fontspec}
 \usepackage[mathbf=sym]{unicode-math}
@@ -26,22 +27,25 @@
 \graphicspath{{figures/dissertation/}}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 \usepackage{array,calc,booktabs,longtable,multirow}
-% Captions single-spaced throughout, bold label, justified text.
-\usepackage[font={small,stretch=1},labelfont=bf,labelsep=period,justification=justified,singlelinecheck=true,skip=6pt]{caption}
+% Quantities: \qty{283.7}{eV}, \qty{192.7(4)}{\angstrom}, \qty{1.64}{g.cm^{-3}}, \ang{54.7}. Units are set upright with a
+% thin space, uncertainties in the compact form 192.7(4), and powers as superscripts (g cm^-3).
+\usepackage{siunitx}
+\DeclareSIUnit{\angstrom}{\text{Å}}
+\sisetup{per-mode=power, uncertainty-mode=compact, range-phrase={ to }, list-final-separator={, and }}
+% Captions single-spaced throughout, justified, with the label ("Figure 4.1.") in spaced small capitals to match the
+% headings.
+\usepackage[font={small,stretch=1},labelsep=period,justification=justified,singlelinecheck=true,skip=6pt]{caption}
+\DeclareCaptionFont{spacedsc}{\addfontfeatures{LetterSpace=6}\scshape}
+\captionsetup{labelfont=spacedsc}
 \usepackage{xcolor}
 \usepackage{enumitem}
 \usepackage{url}
+% Bibliography in the biblatex-phys style (AIP and APS conventions), with its own defaults for names, dates and
+% titles. Back-references are added: each entry lists the pages that cite it.
 \usepackage[
   backend=biber,
-  style=numeric-comp,
-  sorting=none,
+  style=phys,
   autocite=superscript,
-  giveninits=true,
-  maxbibnames=5,
-  minbibnames=1,
-  url=false,
-  isbn=false,
-  eprint=false,
   backref=true,
   backrefstyle=three
 ]{biblatex}
@@ -75,6 +79,10 @@
 \titlespacing*{\subsubsection}{0pt}{1.4ex plus .4ex minus .2ex}{0.4ex}
 % Floats stay within the section that cites them.
 \usepackage[section]{placeins}
+% Floats go to the top of a page (or a float page). A figure that opens its section is placed in the source right after
+% the heading with [htp], so it sits under the heading when it fits there. placeins keeps any float from rising above
+% the heading of its own section.
+\makeatletter\renewcommand{\fps@figure}{tp}\renewcommand{\fps@table}{tp}\makeatother
 
 % Running heads in the main text: the chapter title in spaced small capitals, centered, no rule. Page numbers stay
 % centered at the foot (WSU). Chapter-opening pages are plain. The style is switched on in ../main.tex.
@@ -128,6 +136,23 @@
 % Internal links stay black (WSU). Bookmarks carry section numbers for the PDF sidebar.
 \usepackage[hidelinks,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=0,pdfdisplaydoctitle=true]{hyperref}
 \usepackage{bookmark}
+
+% Cross-references. \cref{...} everywhere in the text (\Cref at the start of a sentence): "Fig. 4.4", "Table 4.1",
+% "Eq. (2.3)", "Chapter 4", "Sec. 3.5"; the whole reference is the link. Panels follow directly: \cref{fig:4.4}a.
+% References from the dissertation into the separate supplemental file are plain text through \suppfig{5}, \supptab{3}
+% and \suppsec{1} ("Fig. S5", "Table S3", "Sec. S1"), since the two PDFs cannot link to each other.
+\usepackage[nameinlink]{cleveref}
+\crefname{figure}{Fig.}{Figs.}\Crefname{figure}{Figure}{Figures}
+\crefname{table}{Table}{Tables}\Crefname{table}{Table}{Tables}
+\crefname{equation}{Eq.}{Eqs.}\Crefname{equation}{Equation}{Equations}
+\creflabelformat{equation}{#2(#1)#3}
+\crefname{chapter}{Chapter}{Chapters}\Crefname{chapter}{Chapter}{Chapters}
+\crefname{section}{Sec.}{Secs.}\Crefname{section}{Section}{Sections}
+\crefname{subsection}{Sec.}{Secs.}\Crefname{subsection}{Section}{Sections}
+\newcommand{\crefrangeconjunction}{ through\nobreakspace}
+\newcommand{\suppfig}[1]{Fig.~S#1}
+\newcommand{\supptab}[1]{Table~S#1}
+\newcommand{\suppsec}[1]{Sec.~S#1}
 
 % Code. Listings are set in FiraCode at \footnotesize (about 94 characters to the line), in black (WSU requires black text outside figures and
 % tables), with a rule on the left and long lines wrapped at spaces with a small hook at the break.
