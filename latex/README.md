@@ -20,6 +20,9 @@ Two documents are built from the repository root, each with LuaLaTeX and biber (
 
 - Margins 1 in top and bottom and 1.25 in at the sides (a 6 in measure), 11 pt type, line stretch 1.15 (142 % of the point size; WSU asks 120 to 145 % for LaTeX), page numbers centered 0.5 in from the bottom edge, roman numerals through the dedication.
 - Text in New Computer Modern Book with New Computer Modern Math Book. `notes/font-demo/font-demo.pdf` and `cm-compare.pdf` compare the alternatives; the swap is two lines in `preamble.tex`.
+- Chapters open with a spaced small-capital "Chapter", a large numeral, the title in spaced small capitals and a short rule. Sections are in spaced small capitals, subsections in bold, subsubsections in italic. Floats stay within the section that cites them (placeins).
+- The main text carries a running head, the chapter title in spaced small capitals, 0.7 in from the top edge (WSU exempts running heads from the 1 in margin). Chapter-opening pages, the front matter and the supplement have page numbers only.
+- Code listings use the `codeblock` environment (FiraCode, black, a rule on the left); `\code{}` sets a command inside a sentence. WSU requires black text outside figures and tables, so there is no syntax colouring.
 - Links are black, as WSU requires. Every figure, table, section and citation reference is a link, the PDF has numbered bookmarks, and each reference in the bibliography lists the pages that cite it as links back into the text.
 
 ## Figures

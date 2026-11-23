@@ -2,7 +2,9 @@
 % All paths are relative to the repository root.
 % WSU: at least 1 in margins, page numbers centered 0.5 in from the bottom edge.
 % Side margins of 1.25 in give a 6 in measure, about 85 characters per line (WSU suggests 45 to 90).
-\usepackage[letterpaper,vmargin=1in,hmargin=1.25in,footskip=0.5in]{geometry}
+% Running heads sit in the top margin, their baseline 0.7 in from the top edge (WSU exempts running heads
+% from the 1 in margin and asks only that nothing come within 0.5 in of the edge).
+\usepackage[letterpaper,vmargin=1in,hmargin=1.25in,footskip=0.5in,headheight=14pt,headsep=0.3in]{geometry}
 \usepackage{amsmath,amssymb}
 \usepackage{fontspec}
 \usepackage[mathbf=sym]{unicode-math}
@@ -49,19 +51,42 @@
 
 % ---------------- headings and lists, following the WSU ETD example (2024) ----------------
 \usepackage{titlesec}
-% Numbered chapters: centered "CHAPTER n" over the title; appendices read "APPENDIX A".
-\titleformat{\chapter}[display]{\normalfont\large\bfseries\centering}{\MakeUppercase{\chaptertitlename}\ \thechapter}{6pt}{\large}
-\titlespacing*{\chapter}{0pt}{0pt}{18pt}
+% Letter-spaced small capitals for display headings and running heads (fontspec tracking, works in LuaLaTeX and XeLaTeX).
+\newcommand{\spacedsc}[1]{{\addfontfeatures{LetterSpace=6}\scshape #1}}
+\newcommand{\spacedlowsc}[1]{{\addfontfeatures{LetterSpace=6}\scshape\MakeLowercase{#1}}}
+% Numbered chapters: a spaced small-capital "Chapter" over a large numeral, the title in spaced small capitals,
+% and a short rule. Every chapter opens the same way, as WSU requires.
+\titleformat{\chapter}[display]
+  {\normalfont\centering}
+  {\spacedlowsc{\chaptertitlename}\\[4pt]{\fontsize{44}{44}\selectfont\thechapter}}
+  {14pt}
+  {\Large\spacedsc}
+  [\vspace{10pt}\rule{0.25\textwidth}{0.4pt}]
+\titlespacing*{\chapter}{0pt}{0pt}{28pt}
 % Unnumbered chapter-level headings (Acknowledgments, Dedication, References, lists): centered capitals at body size.
 \titleformat{name=\chapter,numberless}[block]{\normalfont\normalsize\centering}{}{0pt}{\MakeUppercase}
 \titlespacing*{name=\chapter,numberless}{0pt}{0pt}{12pt}
-% Section levels: numbered bold, then bold, then italic run-in for the fourth level.
-\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{0.8em}{}
+% Section levels: spaced small capitals, then bold, then italic.
+\titleformat{\section}{\normalfont\large}{\thesection}{0.9em}{\spacedsc}
 \titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.8em}{}
 \titleformat{\subsubsection}{\normalfont\normalsize\itshape}{\thesubsubsection}{0.8em}{}
-\titlespacing*{\section}{0pt}{2.0ex plus .5ex minus .2ex}{1.0ex plus .2ex}
+\titlespacing*{\section}{0pt}{2.4ex plus .5ex minus .2ex}{1.2ex plus .2ex}
 \titlespacing*{\subsection}{0pt}{1.6ex plus .4ex minus .2ex}{0.6ex plus .2ex}
 \titlespacing*{\subsubsection}{0pt}{1.4ex plus .4ex minus .2ex}{0.4ex}
+% Floats stay within the section that cites them.
+\usepackage[section]{placeins}
+
+% Running heads in the main text: the chapter title in spaced small capitals, centered, no rule. Page numbers stay
+% centered at the foot (WSU). Chapter-opening pages are plain. The style is switched on in ../main.tex.
+\usepackage{fancyhdr}
+\fancypagestyle{body}{%
+  \fancyhf{}%
+  \fancyhead[C]{\footnotesize\spacedlowsc{\leftmark}}%
+  \fancyfoot[C]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0pt}}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{}
 
 \usepackage{tocloft}
 \renewcommand{\contentsname}{TABLE OF CONTENTS}
@@ -103,9 +128,7 @@
 % Internal links stay black (WSU). Bookmarks carry section numbers for the PDF sidebar.
 \usepackage[hidelinks,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=0,pdfdisplaydoctitle=true]{hyperref}
 \usepackage{bookmark}
-\renewcommand{\contentsname}{Table of Contents}
 
-% Commands emitted by the pandoc conversion of the Word draft.
 % Code. Listings are set in FiraCode at \footnotesize (about 94 characters to the line), in black (WSU requires black text outside figures and
 % tables), with a rule on the left and long lines wrapped at spaces with a small hook at the break.
 % \begin{codeblock} ... \end{codeblock} for a listing; \code{...} for a command or name inside a sentence.
@@ -116,6 +139,7 @@
 \newcommand{\code}[1]{\texttt{#1}}
 \RecustomVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\small}
 
+% Commands emitted by the pandoc conversion of the Word draft.
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 % Document metadata used by the front matter.
