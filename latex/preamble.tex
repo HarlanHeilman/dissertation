@@ -127,12 +127,14 @@
 \renewcommand{\cftchapaftersnum}{:}
 \newlength{\chapnumbox}\settowidth{\chapnumbox}{CHAPTER 7:\ \ }
 \setlength{\cftchapnumwidth}{\chapnumbox}
-% Figure and table entries: "FIGURE 1.1: short title".
-\renewcommand{\cftfigpresnum}{FIGURE\ }
+% Entries follow one another without extra space, as in prior accepted dissertations from the group.
+\setlength{\cftbeforechapskip}{0pt}
+% Figure and table entries: "Figure 1.1: short title", as in prior accepted dissertations from the group.
+\renewcommand{\cftfigpresnum}{Figure\ }
 \renewcommand{\cftfigaftersnum}{:}
-\renewcommand{\cfttabpresnum}{TABLE\ }
+\renewcommand{\cfttabpresnum}{Table\ }
 \renewcommand{\cfttabaftersnum}{:}
-\newlength{\fignumbox}\settowidth{\fignumbox}{FIGURE A.13:\ \ }
+\newlength{\fignumbox}\settowidth{\fignumbox}{Figure 6.13:\ \ }
 \setlength{\cftfignumwidth}{\fignumbox}
 \setlength{\cfttabnumwidth}{\fignumbox}
 \setlength{\cftfigindent}{0pt}
