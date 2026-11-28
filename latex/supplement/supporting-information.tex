@@ -52,11 +52,11 @@ The surface texture for these films shows dense, laterally uniform grains with s
 
 \textbf{NEXAFS Spectroscopy:} NEXAFS spectroscopies were collected at the Soft X-ray Spectroscopy (SXR) beamline of the Australian Synchrotron, part of ANSTO in total electron yield mode on Si wafers. Samples were prepared under similar conditions as for RSoXS measurements yet were collected via a separate batch. Spectra were collected at five sample alignments with respect to the incident electric field polarization vector with respect to the surface normal (\(\ang{20},\ \ang{40},\ \ang{55},\ \ang{70},\ \&\ \ang{90}\)). NEXAFS was collected over the energy range of 270-\qty{350}{eV} and normalized to the energy dependent intensity fluctuation and optical loss via a direct photodiode measurement, and Au mesh drain current. Mass absorption was computed via normalization in the pre and post edge regions to the bare atom mass absorption of ZnPc as extracted from the CXRO Henke atomic scattering factors.\autocite{henke1993x}
 
-Molecular tilt angle was extracted via the DFT cluster and refinement process. As the final step of the refinement process, the molecular polar tilt angle \(\gamma\) is fit using the TDM cluster orientations prescribed by DFT providing a measure of the molecular orientation. This fit produces a reduces \(\chi^{2}\) goodness of fit statistic of .213 indicating very good agreement between the model and experimental data. The molecular tilt angle of \(\ang{74}\) agrees with all other characterizations of the ZnPc edge-on herringbone polymorph described in this study and is taken as the coarse-grained molecular orientation within the films measured under RSoXS.
+Molecular tilt angle was extracted via the DFT cluster and refinement process. As the final step of the refinement process, the molecular polar tilt angle \(\gamma\) is fit using the TDM cluster orientations prescribed by DFT providing a measure of the molecular orientation. This fit produces a reduced \(\chi^{2}\) goodness of fit statistic of .213 indicating very good agreement between the model and experimental data. The molecular tilt angle of \(\ang{74}\) agrees with all other characterizations of the ZnPc edge-on herringbone polymorph described in this study and is taken as the coarse-grained molecular orientation within the films measured under RSoXS.
 
 Optical Tensor Construction
 
-The optical tensor is defined under the convention \(n(E) = 1 - \delta(E) + i\beta(E)\). From experimental NEXAFS the imaginary component is computed directly form the mass absorption spectra:
+The optical tensor is defined under the convention \(n(E) = 1 - \delta(E) + i\beta(E)\). From experimental NEXAFS the imaginary component is computed directly from the mass absorption spectra:
 
 \begin{equation}
   \beta(E) = \frac{\mu\rho}{2k},
@@ -74,11 +74,11 @@ The experimental tensor components are constructed following the established emp
   \beta_{xx}(E) &= \beta_{\mathrm{iso}}(E) - B(\theta)\Delta\beta(E), \label{eq:S-beta-xx}
 \end{align}
 
-The coefficients \(A(\theta)\) and \(B(\theta)\) are defined to match the condition in Stöhr, modified to accommodate the off axis TDM polar angle \(\theta\) associated with the of the primary transition.
+The coefficients \(A(\theta)\) and \(B(\theta)\) are defined to match the condition in Stöhr, modified to accommodate the off axis TDM polar angle \(\theta\) associated with the primary transition.
 
 \begin{align}
   A(\theta) &= \left( 3\cos^{2}\theta - 1 \right)\frac{\beta_{\mathrm{iso}}(E_{\pi})}{\Delta\beta(E_{\pi})}, \label{eq:S-A}\\
-  B(\theta) &= \frac{\left( 1 - \tfrac{1}{2}\cos^{2}\theta \right)\beta_{\mathrm{iso}}(E_{\pi})}{\Delta\beta(E_{\pi})}. \label{eq:S-B}
+  B(\theta) &= \frac{\tfrac{1}{2}\left( 3\cos^{2}\theta - 1 \right)\beta_{\mathrm{iso}}(E_{\pi})}{\Delta\beta(E_{\pi})}. \label{eq:S-B}
 \end{align}
 
 The DFT tensor is instead defined using the directly calculated tensor components for each TDM cluster, resulting in the comparison of Fig.~4.1, requiring no auxiliary analyses.

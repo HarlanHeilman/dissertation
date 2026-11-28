@@ -10,7 +10,7 @@ from figlib import *
 from matplotlib.patches import Rectangle, ConnectionPatch
 from matplotlib.colors import LogNorm, LinearSegmentedColormap
 
-NPZ = os.environ.get('CCD_NPZ', '/mnt/user-data/uploads/dissertation/figs/new/_to_delete/ccd_85302_285eV.npz')
+NPZ = os.environ.get('CCD_NPZ', os.path.expanduser('~/mnt/dissertation/data/dissertation-figures/ccd_85302_285eV.npz'))
 d = np.load(NPZ)
 T = d['table']
 E = float(d['energy'])

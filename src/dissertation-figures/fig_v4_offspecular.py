@@ -10,7 +10,7 @@ from figlib import *
 from matplotlib.patches import Rectangle
 from matplotlib.colors import LogNorm
 
-NPZ = os.environ.get('CCD_NPZ', os.path.expanduser('~/mnt/dissertation/_to_delete/figs-new/ccd_85302_285eV.npz'))
+NPZ = os.environ.get('CCD_NPZ', os.path.expanduser('~/mnt/dissertation/data/dissertation-figures/ccd_85302_285eV.npz'))
 d = np.load(NPZ)
 T = d['table']
 FR = {114: ('direct beam', GRAY), 124: ('θ = 2.06°', BLACK), 201: ('θ = 13.56°', RED)}
